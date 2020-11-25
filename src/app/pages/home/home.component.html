@@ -1,0 +1,242 @@
+<!--/ Carousel Star /-->
+<div class="intro intro-carousel">
+    <owl-carousel-o id="carousel" class="owl-theme" [options]="customOptions" (translated)="test()" (change)="test2()">
+        <ng-template carouselSlide class="carousel-item-a intro-item">
+            <div class="bg-image" style="
+      height: 100vh;
+      background-image: url('../../../assets/img/home.jpg');
+    ">
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                    <div class="table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="intro-body">
+                                        <p class="intro-title-top">
+                                            Juriquilla, Querétaro <br /> 76226
+                                        </p>
+                                        <h1 class="intro-title mb-4">
+                                            <span class="color-b">204 </span> Cascada de Agua <br /> Real de Juriquilla
+                                        </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            <a href="#"><span class="price-a">renta | $ 12.000</span></a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template carouselSlide class="carousel-item-a intro-item">
+    <div class="bg-image" style="
+  height: 100vh;
+  background-image: url('../../../assets/img/slide-1.jpg');
+">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="intro-body">
+                                <p class="intro-title-top">
+                                    Zibatá, Querétaro <br /> 76226
+                                </p>
+                                <h1 class="intro-title mb-4">
+                                    <span class="color-b">204 </span> Calle de prueba<br /> Zibatá
+                                </h1>
+                                <p class="intro-subtitle intro-price">
+                                    <a href="#"><span class="price-a">venta | $ 3 200 000</span></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</ng-template>
+<ng-template carouselSlide class="carousel-item-a intro-item">
+<div class="bg-image" style="
+height: 100vh;
+background-image: url('../../../assets/img/slide-3.jpg');
+">
+  <div class="overlay overlay-a"></div>
+  <div class="intro-content display-table">
+      <div class="table-cell">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8">
+                      <div class="intro-body">
+                          <p class="intro-title-top">
+                              El Márques, Querétaro <br /> 76226
+                          </p>
+                          <h1 class="intro-title mb-4">
+                              <span class="color-b">204 </span> Calle de prueba<br /> Arboledas
+                          </h1>
+                          <p class="intro-subtitle intro-price">
+                              <a href="#"><span class="price-a">renta | $ 20,000</span></a
+        >
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</ng-template>
+</owl-carousel-o>
+</div>
+
+<div class="pt-5 mt-5 text-center">
+    <img src="../../../assets/img/logo.png" style="width: 250px; height: auto" alt="" />
+</div>
+
+<!--/ Services Star /-->
+<section class="section-services section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Nuestros Servicios</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-md-4">
+                <div class="card-box-c foo">
+                    <div class="card-header-c d-flex">
+                        <div class="card-box-ico">
+                            <fa-icon [icon]="faHome" aria-hidden="true"></fa-icon>
+                        </div>
+                        <div class="card-title-c align-self-center">
+                            <h2 class="title-c">Venta</h2>
+                        </div>
+                    </div>
+                    <div class="card-body-c">
+                        <p class="content-c">
+                            Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+                        </p>
+                    </div>
+                    <div class="card-footer-c">
+                        <a href="#" class="link-c link-icon">Vender ahora
+              <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
+            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-box-c foo">
+                                    <div class="card-header-c d-flex">
+                                        <div class="card-box-ico">
+                                            <fa-icon [icon]="faMoney" aria-hidden="true"></fa-icon>
+                                        </div>
+                                        <div class="card-title-c align-self-center">
+                                            <h2 class="title-c">Compra</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-body-c">
+                                        <p class="content-c">
+                                            Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer-c">
+                                        <a href="#" class="link-c link-icon">Ver inmuebles
+              <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
+            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-box-c foo">
+                                    <div class="card-header-c d-flex">
+                                        <div class="card-box-ico">
+                                            <fa-icon [icon]="faHands" aria-hidden="true"></fa-icon>
+                                        </div>
+                                        <div class="card-title-c align-self-center">
+                                            <h2 class="title-c">Renta</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-body-c">
+                                        <p class="content-c">
+                                            Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer-c">
+                                        <a href="#" class="link-c link-icon">Ver inmuebles
+              <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
+            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                    <section class="section-property section-t8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="title-wrap d-flex justify-content-between">
+                                        <div class="title-box">
+                                            <h2 class="title-a">Propiedades Cerca</h2>
+                                        </div>
+                                        <div class="title-link">
+                                            <a href="property-grid.html">Ver todas
+                                    <span class="ion-ios-arrow-forward"></span>
+                                  </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <owl-carousel-o id="property-carousel" class="owl-theme" [options]="propiertyOptions">
+                                <ng-template carouselSlide>
+                                    <app-card-property></app-card-property>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <app-card-property></app-card-property>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <app-card-property></app-card-property>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <app-card-property></app-card-property>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <app-card-property></app-card-property>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                    </section>
+                    <section class="section-news section-t8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="title-wrap d-flex justify-content-between">
+                                        <div class="title-box">
+                                            <h2 class="title-a">Novedades</h2>
+                                        </div>
+                                        <div class="title-link">
+                                            <a href="blog-grid.html">ver todas
+                                  <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <owl-carousel-o id="new-carousel" class="owl-theme">
+                                <ng-template carouselSlide>
+                                    <app-square-card></app-square-card>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                    </section>
+                    <br>
+                    <br>

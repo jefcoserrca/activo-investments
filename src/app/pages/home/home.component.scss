@@ -1,0 +1,381 @@
+.intro {
+    height: 100vh;
+    position: relative;
+    color: #ffffff;
+}
+
+::ng-deep.intro .owl-theme .owl-dots {
+    position: absolute;
+    bottom: 70px;
+    right: 50px;
+}
+
+::ng-deep.intro .owl-theme .owl-dots .owl-dot span {
+    background: #ffffff;
+    border: 0px solid #ffffff;
+}
+
+::ng-deep.intro .owl-theme .owl-dots .owl-dot:hover span {
+    background-color: #2eca6a;
+}
+
+::ng-deep.intro .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #2eca6a;
+}
+
+::ng-deep.intro .intro-item {
+    padding-top: 2rem;
+}
+
+.intro .carousel-item-a {
+    position: relative;
+    height: 100vh;
+}
+
+::ng-deep.intro .carousel-item-a.bg-image {
+    background-attachment: scroll;
+}
+
+::ng-deep.intro .intro-content {
+    position: absolute;
+}
+
+.intro .intro-body {
+    padding-left: 1rem;
+}
+
+.intro .intro-body .price-a {
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border: 2px solid #2eca6a;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.030em;
+}
+
+.intro .spacial {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+    color: #ffffff;
+}
+
+.intro .intro-title-top {
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+    margin-bottom: 1rem;
+    font-size: .9rem;
+    color: #ffffff;
+    letter-spacing: .05em;
+}
+
+.intro .intro-title {
+    transition-duration: 9s !important;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+
+.intro .intro-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.intro .intro-subtitle.intro-price {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+
+/*------/ Intro Single /------*/
+
+.intro-single {
+    padding: 12rem 0 3rem;
+}
+
+.intro-single .title-single-box {
+    padding: 1rem 0 1rem 2rem;
+}
+
+.intro-single .title-single-box {
+    border-left: 3px solid #2eca6a;
+}
+
+.intro-single .title-single-box .title-single {
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+
+.intro-single .breadcrumb-box {
+    padding: 1rem 0 0 .5rem;
+}
+
+.intro-single .breadcrumb {
+    background-color: transparent;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.overlay-a {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.display-table {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.owl-carousel .owl-item {
+    height: 100vh !important;
+}
+
+ng-template {
+    height: 100vh !important;
+}
+
+p a:hover {
+    span {
+        background-color: #26a356;
+        color: #ffffff;
+    }
+    text-decoration: none;
+}
+
+.section-t8 {
+    padding-top: 8rem;
+}
+
+.card-box-c {
+    position: relative;
+}
+
+.card-header-c {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.card-body-c {
+    padding: .5rem .5rem 0 .5rem;
+}
+
+.card-footer-c {
+    padding-left: .5rem;
+}
+
+.card-box-ico {
+    padding: 1rem 3rem 1rem 2.5rem;
+    border: 5px solid #2eca6a;
+}
+
+.card-box-ico fa-icon {
+    font-size: 4rem;
+    color: #000000;
+}
+
+.title-c {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-left: -40px;
+}
+
+.link-icon {
+    color: #000000;
+    font-weight: 500;
+    cursor: pointer !important;
+}
+
+.link-icon fa-icon {
+    font-size: 14px;
+    padding-left: 4px;
+    vertical-align: middle;
+    &:hover {
+        color: #2eca6a;
+    }
+}
+
+a {
+    color: #000000;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #2eca6a;
+    text-decoration: none;
+}
+
+// OWL
+::ng-deep .owl-theme .owl-dots {
+    text-align: center;
+    margin-top: 18px;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot span {
+    width: 16px;
+    height: 9px;
+    margin: 5px 5px;
+    background: #000000;
+    border: 0px solid #000000;
+    display: block;
+    transition: all 0.6s ease-in-out;
+    cursor: pointer;
+    border-radius: 0px;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot:hover span {
+    background-color: #2eca6a;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #2eca6a;
+    width: 35px;
+}
+
+::ng-deep .owl-arrow .owl-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+}
+
+::ng-deep .owl-arrow .owl-nav .owl-prev,
+::ng-deep .owl-arrow .owl-nav .owl-next {
+    display: inline-block;
+    transition: all 0.6s ease-in-out;
+    color: #000000;
+}
+
+::ng-deep .owl-arrow .owl-nav .owl-prev.disabled,
+::ng-deep .owl-arrow .owl-nav .owl-next.disabled {
+    transition: all 0.6s ease-in-out;
+    color: #adadad;
+}
+
+::ng-deep .owl-arrow .owl-nav .owl-next {
+    margin-left: 15px;
+}
+
+::ng-deep .nav-arrow-a .owl-arrow .owl-nav {
+    font-size: 1.8rem;
+    margin-top: -110px;
+}
+
+::ng-deep .nav-arrow-a .owl-arrow .owl-nav .owl-next {
+    margin-left: 15px;
+}
+
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev,
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-next {
+    padding: .7rem 1.5rem !important;
+    display: inline-block;
+    transition: all 0.6s ease-in-out;
+    color: #ffffff;
+    background-color: #2eca6a;
+    opacity: .9;
+}
+
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev.disabled,
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-next.disabled {
+    transition: all 0.6s ease-in-out;
+    color: #ffffff;
+}
+
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
+::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-next:hover,
+::ng-deep .owl-theme .owl-nav [class*=owl-]:hover {
+    background-color: #26a356 !important;
+}
+
+.nav-arrow-b .owl-arrow .owl-nav .owl-next {
+    margin-left: 0px;
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}

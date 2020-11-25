@@ -1,0 +1,58 @@
+.section-footer {
+    padding-top: 60px;
+    margin-top: 60px;
+    background: #f3f3f3;
+}
+
+.section-footer ul {
+    line-height: 2;
+}
+
+.section-footer .item-list-a i {
+    font-size: 18px;
+    padding-right: 4px;
+    color: #2eca6a;
+}
+
+.section-footer .widget-a .w-title-a {
+    margin-bottom: 1rem;
+}
+
+footer {
+    background: #f3f3f3;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer .copyright-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+footer .credits {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #555555;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #000000;
+}
+
+a {
+    color: #000000;
+    transition: all .5s ease;
+}
+
+a:hover {
+    color: #2eca6a;
+    text-decoration: none;
+}
