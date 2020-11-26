@@ -9,10 +9,10 @@ declare var $: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  faHome=faHome;
-  faMoney= faHandHoldingUsd;
-  faHands= faHandshake;
-  faArrow= faArrowRight;
+  faHome = faHome;
+  faMoney = faHandHoldingUsd;
+  faHands = faHandshake;
+  faArrow = faArrowRight;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
     },
     nav: false,
     autoplay: true,
-		autoplayTimeout: 3000,
-		autoplayHoverPause: true
-  }
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true
+  };
+
   propiertyOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -61,15 +62,14 @@ export class HomeComponent implements OnInit {
       }
     },
     nav: false,
-    autoHeight:true,
-    
-  }
+    autoHeight: true,
+  };
 
   newsOptions: OwlOptions = {
       loop: true,
       margin: 30,
       responsive: {
-        0: {  
+        0: {
           items: 1,
         },
         769: {
@@ -79,8 +79,7 @@ export class HomeComponent implements OnInit {
           items: 3,
         }
       }
-    
-  }
+  };
 
   constructor() { }
 
@@ -88,13 +87,13 @@ export class HomeComponent implements OnInit {
 
   }
 
-  test(){
+  traslateCarousel(): void {
     $('.intro-content .intro-title').addClass('zoomIn animated').show();
     $('.intro-content .intro-price').addClass('fadeInUp animated').show();
     $('.intro-content .intro-title-top, .intro-content .spacial').addClass('fadeIn animated').show();
   }
 
-  test2() {
+  changeCarousel(): void {
     $('.intro-content .intro-title').removeClass('zoomIn animated').hide();
     $('.intro-content .intro-price').removeClass('fadeInUp animated').hide();
     $('.intro-content .intro-title-top, .intro-content .spacial').removeClass('fadeIn animated').hide();

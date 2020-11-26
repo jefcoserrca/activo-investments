@@ -253,3 +253,26 @@ a:hover {
         background-color: transparent !important;
     }
 }
+
+@media only screen and (max-width:768px) {
+    .text-brand {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-default .dropdown .dropdown-menu {
+        border-top: 4px solid #2eca6a;
+        border-left: 0;
+        display: block;
+        position: absolute;
+        box-shadow: 0 2px rgba(17, 16, 15, 0.1), 0 2px 10px rgba(20, 19, 18, 0.1);
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-default.navbar-trans .nav-item,
+    .navbar-default.navbar-reduce .nav-item {
+        margin-left: 15px;
+    }
+}

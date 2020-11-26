@@ -1,10 +1,12 @@
 <!--/ Carousel Star /-->
 <div class="intro intro-carousel">
-    <owl-carousel-o id="carousel" class="owl-theme" [options]="customOptions" (translated)="test()" (change)="test2()">
+    <owl-carousel-o id="carousel" class="owl-theme" [options]="customOptions" (translated)="traslateCarousel()" (change)="changeCarousel()">
         <ng-template carouselSlide class="carousel-item-a intro-item">
             <div class="bg-image" style="
       height: 100vh;
       background-image: url('../../../assets/img/home.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
     ">
                 <div class="overlay overlay-a"></div>
                 <div class="intro-content display-table">
@@ -35,6 +37,9 @@
     <div class="bg-image" style="
   height: 100vh;
   background-image: url('../../../assets/img/slide-1.jpg');
+  background-size: cover;
+    background-repeat: no-repeat;
+
 ">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
@@ -65,6 +70,8 @@
 <div class="bg-image" style="
 height: 100vh;
 background-image: url('../../../assets/img/slide-3.jpg');
+background-size: cover;
+background-repeat: no-repeat;
 ">
   <div class="overlay overlay-a"></div>
   <div class="intro-content display-table">
@@ -189,7 +196,7 @@ background-image: url('../../../assets/img/slide-3.jpg');
                                             <h2 class="title-a">Propiedades Cerca</h2>
                                         </div>
                                         <div class="title-link">
-                                            <a href="property-grid.html">Ver todas
+                                            <a [routerLink]="['/inmuebles']">Ver todas
                                     <span class="ion-ios-arrow-forward"></span>
                                   </a>
                                         </div>
@@ -224,14 +231,20 @@ background-image: url('../../../assets/img/slide-3.jpg');
                                             <h2 class="title-a">Novedades</h2>
                                         </div>
                                         <div class="title-link">
-                                            <a href="blog-grid.html">ver todas
+                                            <a [routerLink]="['/inmuebles']">ver todas
                                   <span class="ion-ios-arrow-forward"></span>
                                 </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <owl-carousel-o id="new-carousel" class="owl-theme">
+                            <owl-carousel-o id="new-carousel" class="owl-theme" [options]="newsOptions">
+                                <ng-template carouselSlide>
+                                    <app-square-card></app-square-card>
+                                </ng-template>
+                                <ng-template carouselSlide>
+                                    <app-square-card></app-square-card>
+                                </ng-template>
                                 <ng-template carouselSlide>
                                     <app-square-card></app-square-card>
                                 </ng-template>
