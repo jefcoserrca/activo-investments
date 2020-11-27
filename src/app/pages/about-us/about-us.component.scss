@@ -1,0 +1,182 @@
+        .intro-single {
+            padding: 12rem 0 3rem;
+        }
+        
+        @media (max-width: 767px) {
+            .intro-single {
+                padding-top: 9rem;
+            }
+        }
+        
+        .intro-single .title-single-box {
+            padding: 1rem 0 1rem 2rem;
+        }
+        
+        .intro-single .title-single-box {
+            border-left: 3px solid #2eca6a;
+        }
+        
+        .intro-single .title-single-box .title-single {
+            font-weight: 600;
+            font-size: 2.2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .intro-single .title-single-box .title-single {
+                font-size: 2.1rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .intro-single .title-single-box .title-single {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .intro-single .breadcrumb-box {
+            padding: 1rem 0 0 .5rem;
+        }
+        
+        .intro-single .breadcrumb {
+            background-color: transparent;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        
+        .section-about .title-vertical {
+            position: absolute;
+            letter-spacing: 0;
+            transform: rotate(-90deg);
+            top: 50px;
+            text-align: left;
+            font-size: 1.8rem;
+            width: 300px;
+            font-weight: 700;
+            text-align: right;
+            font-family: 'Poppins', sans-serif;
+            color: #555555;
+        }
+        
+        .about-img-box {
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        @media (min-width: 576px) {
+            .about-img-box {
+                padding-left: 4rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .about-img-box {
+                padding-left: 5rem;
+            }
+        }
+        
+        .sinse-box {
+            background-color: #2eca6a;
+            padding: 1rem 2rem;
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+        }
+        
+        @media (min-width: 576px) {
+            .sinse-box {
+                padding: 1.5rem 2.5rem;
+                bottom: 20px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .sinse-box {
+                padding: 1.5rem 3rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .sinse-box {
+                padding: 3rem 4.5rem;
+            }
+        }
+        
+        .sinse-box .sinse-title {
+            font-weight: 700;
+            letter-spacing: 0.043em;
+            font-size: 1rem;
+        }
+        
+        @media (min-width: 576px) {
+            .sinse-box .sinse-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .sinse-box .sinse-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .sinse-box .sinse-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        .sinse-box .sinse-title span {
+            position: absolute;
+        }
+        
+        .sinse-box .sinse-title span:after {
+            content: ' ';
+            width: 35px;
+            height: 2px;
+            background-color: #000000;
+            position: absolute;
+            bottom: -15px;
+        }
+        
+        .sinse-box p {
+            margin-bottom: 0;
+            font-size: .7rem;
+        }
+        
+        @media (min-width: 576px) {
+            .sinse-box p {
+                font-size: .8rem;
+            }
+        }
+        
+        @media (min-width: 576px) {
+            .sinse-box p {
+                font-size: 1rem;
+            }
+        }
+        
+        .color-d {
+            color: #adadad;
+        }
+        
+        .title-box-d {
+            padding-bottom: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .title-box-d .title-d {
+            font-weight: 600;
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .title-box-d .title-d:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: #2eca6a;
+            bottom: 20px;
+            left: 0;
+        }

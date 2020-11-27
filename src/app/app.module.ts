@@ -12,6 +12,7 @@ import { CardPropertyComponent } from './components/card-property/card-property.
 import { FooterComponent } from './components/footer/footer.component';
 import { SquareCardComponent } from './components/square-card/square-card.component';
 import { EstateListComponent } from './pages/estate-list/estate-list.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EstateListComponent } from './pages/estate-list/estate-list.component';
     FooterComponent,
     SquareCardComponent,
     EstateListComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

@@ -58,3 +58,82 @@ a:hover {
     color: #2eca6a;
     font-size: 1.3rem;
 }
+
+
+/*------/ Space Padding /------*/
+
+.section-t8 {
+    padding-top: 8rem;
+}
+
+@media (max-width: 767px) {
+    .section-t8 {
+        padding-top: 4rem;
+    }
+}
+
+.section-t4 {
+    padding-top: 4rem;
+}
+
+@media (max-width: 767px) {
+    .section-t4 {
+        padding-top: 2rem;
+    }
+}
+
+.section-t3 {
+    padding-top: 3rem;
+}
+
+@media (max-width: 767px) {
+    .section-md-t3 {
+        padding-top: 3rem;
+    }
+}
+
+.section-b2 {
+    padding-bottom: 2rem;
+}
+
+.section-tb85 {
+    padding: 8rem 0 5rem 0;
+}
+
+@media (max-width: 767px) {
+    .section-tb85 {
+        padding: 4rem 0 2.5rem 0;
+    }
+}
+
+.text-brand {
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    .text-brand {
+        font-size: 1.8rem;
+    }
+}
+
+.color-a {
+    color: #000000;
+}
+
+.color-b {
+    color: #2eca6a;
+}
+
+.color-d {
+    color: #adadad;
+}
+
+.color-text-a {
+    color: #555555;
+}
+
+.no-margin {
+    margin: 0;
+}
