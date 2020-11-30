@@ -13,6 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SquareCardComponent } from './components/square-card/square-card.component';
 import { EstateListComponent } from './pages/estate-list/estate-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { PropiertySingleComponent } from './pages/propierty-single/propierty-single.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     SquareCardComponent,
     EstateListComponent,
     AboutUsComponent,
+    ContactComponent,
+    PropiertySingleComponent,
   ],
   imports: [
     BrowserModule,
