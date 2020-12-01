@@ -1,0 +1,477 @@
+.intro-single {
+    padding: 12rem 0 3rem;
+}
+
+@media (max-width: 767px) {
+    .intro-single {
+        padding-top: 9rem;
+    }
+}
+
+.intro-single .title-single-box {
+    padding: 1rem 0 1rem 2rem;
+}
+
+.intro-single .title-single-box {
+    border-left: 3px solid #2eca6a;
+}
+
+.intro-single .title-single-box .title-single {
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+
+@media (min-width: 768px) {
+    .intro-single .title-single-box .title-single {
+        font-size: 2.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .intro-single .title-single-box .title-single {
+        font-size: 2.5rem;
+    }
+}
+
+.intro-single .breadcrumb-box {
+    padding: 1rem 0 0 .5rem;
+}
+
+.intro-single .breadcrumb {
+    background-color: transparent;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.gallery-property {
+    margin-bottom: 3rem;
+}
+
+.property-price {
+    margin: 0 auto;
+}
+
+.property-price .card-header-c {
+    padding: 0;
+}
+
+.summary-list {
+    padding-right: 1rem;
+    color: #000000;
+}
+
+.summary-list .list {
+    padding: 0;
+    line-height: 2;
+}
+
+.summary-list .list span {
+    color: #555555;
+}
+
+@media (max-width: 767px) {
+    .property-agent {
+        margin-top: 2.5rem;
+    }
+}
+
+.property-agent .title-agent {
+    font-weight: 600;
+}
+
+.property-agent ul {
+    line-height: 2;
+    color: #000000;
+}
+
+.property-agent .socials-a {
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .property-contact {
+        margin-top: 2.5rem;
+    }
+}
+
+::ng-deep .owl-stage {
+    width: max-content !important;
+}
+
+::ng-deep .owl-arrow .owl-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+}
+
+ ::ng-deep .owl-arrow .owl-nav .owl-prev,
+.owl-arrow .owl-nav .owl-next {
+    display: inline-block;
+    transition: all 0.6s ease-in-out;
+    color: #000000;
+}
+
+ ::ng-deep .owl-arrow .owl-nav .owl-prev.disabled,
+.owl-arrow .owl-nav .owl-next.disabled {
+    transition: all 0.6s ease-in-out;
+    color: #adadad;
+}
+
+ ::ng-deep .owl-arrow .owl-nav .owl-next {
+    margin-left: 15px;
+}
+
+ ::ng-deep .nav-arrow-a .owl-arrow .owl-nav {
+    font-size: 1.8rem;
+    margin-top: -110px;
+}
+
+ ::ng-deep .nav-arrow-a .owl-arrow .owl-nav .owl-next {
+    margin-left: 15px;
+}
+
+ ::ng-deep .nav-arrow-b .owl-arrow .owl-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+ ::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev,
+.nav-arrow-b .owl-arrow .owl-nav .owl-next {
+    padding: .7rem 1.5rem !important;
+    display: inline-block;
+    transition: all 0.6s ease-in-out;
+    color: #ffffff;
+    background-color: #2eca6a;
+    opacity: .9;
+}
+
+::ng-deep .owl-next {
+    padding: .7rem 1.5rem !important;
+    display: inline-block;
+    transition: all 0.6s ease-in-out;
+    color: #ffffff;
+    background-color: #2eca6a !important;
+    opacity: .9;
+    &.owl-next:hover {
+        background-color: #26a356 !important;
+    }
+}
+
+::ng-deep .owl-item img {
+    height: 100% !important;
+    width: auto;
+}
+
+ ::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev.disabled,
+.nav-arrow-b .owl-arrow .owl-nav .owl-next.disabled {
+    transition: all 0.6s ease-in-out;
+    color: #ffffff;
+}
+
+ ::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
+.nav-arrow-b .owl-arrow .owl-nav .owl-next:hover {
+    background-color: #26a356 !important;
+}
+
+ ::ng-deep .nav-arrow-b .owl-arrow .owl-nav .owl-next {
+    margin-left: 0px !important;
+}
+
+.form-as #sendmessage {
+    color: #2eca6a;
+    border: 1px solid #26a356;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #errormessage {
+    color: red;
+    display: none;
+    border: 1px solid red;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #sendmessage.show,
+.form-as #errormessage.show,
+.form-as .show {
+    display: block;
+}
+
+.form-as .validation {
+    color: red;
+    display: none;
+    margin: 4px 0 20px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.form-as label {
+    color: #000000;
+    position: relative;
+}
+
+.form-as select.form-control-lg:not([size]):not([multiple]) {
+    height: 3.5rem;
+}
+
+.form-as .form-control {
+    border-radius: 0;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.form-as .form-control.form-control-a {
+    height: 3.5rem;
+}
+
+.form-as .form-control:focus {
+    box-shadow: none;
+    border-color: #2eca6a;
+}
+
+.php-email-form .validate {
+    display: none;
+    color: red;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.php-email-form .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.php-email-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.php-email-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.php-email-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+
+.php-email-form label {
+    color: #000000;
+    position: relative;
+}
+
+.php-email-form select.form-control-lg:not([size]):not([multiple]) {
+    height: 3.5rem;
+}
+
+.php-email-form .form-control {
+    border-radius: 0;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.php-email-form .form-control.form-control-a {
+    height: 3.5rem;
+}
+
+.php-email-form .form-control:focus {
+    box-shadow: none;
+    border-color: #2eca6a;
+}
+
+@-webkit-keyframes animate-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn {
+    transition: .5s ease;
+}
+
+.btn.btn-a,
+.btn.btn-b {
+    border-radius: 0;
+    padding: 1rem 3rem;
+    letter-spacing: .05rem;
+}
+
+.btn.btn-a {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn.btn-a:hover {
+    background-color: #2eca6a;
+    color: #000000;
+}
+
+card-box-c {
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    .card-box-c {
+        margin-bottom: 2rem;
+    }
+}
+
+.card-header-c {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.card-body-c {
+    padding: .5rem .5rem 0 .5rem;
+}
+
+@media (max-width: 767px) {
+    .card-body-c {
+        padding: 0;
+    }
+}
+
+.card-footer-c {
+    padding-left: .5rem;
+}
+
+.card-box-ico {
+    padding: 1rem 3rem 1rem 2.5rem;
+    border: 5px solid #2eca6a;
+}
+
+.card-box-ico span {
+    font-size: 4rem;
+    color: #000000;
+}
+
+.title-c {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-left: -40px;
+}
+
+@media (min-width: 768px) {
+    .title-c {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .title-c {
+        font-size: 2.5rem;
+    }
+}
+
+.title-box-d {
+    padding-bottom: 1.8rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.title-box-d .title-d {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.title-box-d .title-d:after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 4px;
+    background-color: #2eca6a;
+    bottom: 20px;
+    left: 0;
+}
+
+.list-a {
+    display: inline-block;
+    line-height: 2;
+    padding: 0;
+    list-style: none;
+}
+
+.list-a li {
+    position: relative;
+    width: 50%;
+    float: left;
+    padding-left: 25px;
+    padding-right: 5px;
+}
+
+@media (min-width: 992px) {
+    .list-a li {
+        width: 33.333%;
+    }
+}
+
+.list-a li:before {
+    content: '';
+    width: 10px;
+    height: 2px;
+    position: absolute;
+    background-color: #313131;
+    top: 15px;
+    left: 0;
+}
+
+.nav-pills-a.nav-pills .nav-link {
+    color: #000000;
+    position: relative;
+    font-weight: 600;
+}
+
+.nav-pills-a.nav-pills .nav-link.active {
+    background-color: transparent;
+}
+
+.nav-pills-a.nav-pills .nav-link.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: #2eca6a;
+    z-index: 2;
+}
