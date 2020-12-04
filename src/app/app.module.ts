@@ -15,6 +15,15 @@ import { EstateListComponent } from './pages/estate-list/estate-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PropiertySingleComponent } from './pages/propierty-single/propierty-single.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './modals/login/login.component';
+import { SignupComponent } from './modals/signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +37,22 @@ import { PropiertySingleComponent } from './pages/propierty-single/propierty-sin
     AboutUsComponent,
     ContactComponent,
     PropiertySingleComponent,
+    LoginComponent,
+    SignupComponent,
+    LoadingComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    AngularFireAuthModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

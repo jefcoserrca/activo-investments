@@ -1,0 +1,74 @@
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signupModalLabel">Registrate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div *ngIf="loading" class="modal-body d-flex justify-content-center">
+                <app-loading></app-loading>
+            </div>
+            <div *ngIf="!loading" class="modal-body">
+                <!--** Facebook Button  -->
+                <div class="text-center my-3">
+                    <button class="btn btn-fb" (click)="registerWithFacebook()">
+                                        <fa-icon [icon]="fbIncon"></fa-icon>
+                                        Registrate con Facebook
+                                    </button>
+                </div>
+
+                <!--** OR section-->
+                <div class="d-flex justify-content-center align-items-center my-4">
+                    <hr> Ó
+                    <hr>
+                </div>
+
+                <form class="form-as" [formGroup]="signupForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre" class="form-control" formControlName="name" [ngClass]="{'form-error': signupForm.controls['name'].touched && signupForm.controls['name'].errors?.required}">
+                        <span class="error-message" *ngIf="signupForm.controls['name'].touched && signupForm.controls['name'].errors?.required">
+                            Nombre es requerido
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Correo" class="form-control" formControlName="email" [ngClass]="{'form-error': signupForm.controls['email'].touched && (signupForm.controls['email'].errors?.required || signupForm.controls['email'].errors?.pattern )}">
+                        <span class="error-message" *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.required">
+                            Correo es requerido
+                        </span>
+                        <span class="error-message" *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.pattern">
+                            Formato no válido
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{'form-error': signupForm.controls['password'].touched && signupForm.controls['password'].errors?.required}">
+                        <span class="error-message" *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.required">
+                            Contraseña es requerida
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirmar Password" formControlName="confirmPassword" [ngClass]="{'form-error': signupForm.controls['confirmPassword'].touched && (signupForm.controls['confirmPassword'].errors?.required || signupForm.controls['confirmPassword'].errors?.mustMatch )}">
+                        <span class="error-message" *ngIf="signupForm.controls['confirmPassword'].touched && signupForm.controls['confirmPassword'].errors?.required">
+                            Confirma la contraseña 
+                        </span>
+                        <span class="error-message" *ngIf="signupForm.controls['confirmPassword'].touched && signupForm.controls['confirmPassword'].errors?.mustMatch">
+                            Las contraseñas no coinciden
+                        </span>
+                    </div>
+                </form>
+                <div class="text-center mb-3">
+                    <button class="btn btn-a" (click)="createUser()">
+                        Registrarme
+                    </button>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <!--<a href="">
+                    Olvidaste tu password?
+                </a> -->
+            </div>
+        </div>
+    </div>
+</div>

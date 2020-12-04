@@ -1,0 +1,56 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <!--** Facebook Button  -->
+                <div class="text-center my-3">
+                    <button class="btn btn-fb" (click)="loginWithFacebook()">
+                                        <fa-icon [icon]="fbIncon"></fa-icon>
+                                        Iniciar con Facebook
+                                    </button>
+                </div>
+
+                <!--** OR section-->
+                <div class="d-flex justify-content-center align-items-center my-4">
+                    <hr> Ó
+                    <hr>
+                </div>
+                <form class="form-as" [formGroup]="loginForm">
+                    <div class="form-group">
+                        <input type="email" placeholder="Correo" class="form-control" formControlName="email" [ngClass]="{'form-error': loginForm.controls['email'].touched && (loginForm.controls['email'].errors?.required || loginForm.controls['email'].errors?.pattern )}">
+                        <span class="error-message" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.required">
+                            Correo es requerido
+                        </span>
+                        <span class="error-message" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors?.pattern">
+                            Formato no válido
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{'form-error': loginForm.controls['password'].touched && loginForm.controls['password'].errors?.required}">
+                        <span class="error-message" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.required">
+                            Contraseña es requerida
+                        </span>
+                    </div>
+                </form>
+                <div class="text-center mb-3">
+                    <button class="btn btn-a" (click)="loginEmailAndPassword()">
+                        Iniciar
+                    </button>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="">
+                    Olvidaste tu password?
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

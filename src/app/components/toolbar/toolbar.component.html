@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="padding-right: 0px !important;">
     <div class="container">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <fa-icon [icon]="faBars" aria-hidden="true"></fa-icon>
@@ -22,10 +22,10 @@
                     <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/contacto']">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="property-grid.html">Login</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#signupModal">Registrate</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-signin" href="blog-grid.html">Registrate</a>
+                    <a class="nav-link btn-signin" data-toggle="modal" data-target="#loginModal">Login</a>
                 </li>
             </ul>
         </div>
@@ -34,3 +34,5 @@
       </button>
     </div>
 </nav>
+<app-login></app-login>
+<app-signup></app-signup>
