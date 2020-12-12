@@ -1,0 +1,81 @@
+<div class="pt-4">
+    <h6>Datos de Facturación</h6>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-lg-6">
+        <span class="error-message text-center" *ngIf="error">
+            <fa-icon [icon]="faBomb"></fa-icon> Ops! Ocurrió un error. Vuelve a intentarlo
+         </span>
+        <div *ngIf="loading" class="modal-body d-flex justify-content-center">
+            <app-loading></app-loading>
+        </div>
+        <div *ngIf="!error && !loading && confirm" class="modal-body text-center successful">
+            <fa-icon [icon]="faCheck"></fa-icon> <br>
+            <p>Su perfil se ha actualizado!</p> <br>
+        </div>
+        <form class="form-as" [formGroup]="form">
+            <div class="form-group">
+                <input type="text" placeholder="Nombre y apellidos" class="form-control" formControlName="name" [ngClass]="{'form-error': form.controls['name'].touched && form.controls['name'].errors?.required}">
+                <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
+                    Nombre es requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Correo" class="form-control" formControlName="email" [ngClass]="{'form-error': form.controls['email'].touched && (form.controls['email'].errors?.required || form.controls['email'].errors?.pattern )}">
+                <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.required">
+                    Correo es requerido
+                </span>
+                <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.pattern">
+                    Formato no válido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="RFC" formControlName="RFC" [ngClass]="{'form-error': form.controls['RFC'].touched && form.controls['RFC'].errors?.required}">
+                <span class="error-message" *ngIf="form.controls['RFC'].touched && form.controls['RFC'].errors?.required">
+                    RFC es requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Razón Social" formControlName="businessName" [ngClass]="{'form-error': form.controls['businessName'].touched && (form.controls['businessName'].errors?.required || form.controls['businessName'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['businessName'].touched && form.controls['businessName'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Calle" formControlName="street" [ngClass]="{'form-error': form.controls['street'].touched && (form.controls['street'].errors?.required || form.controls['street'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['street'].touched && form.controls['street'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Colonia" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="number" maxlength="5" class="form-control" width="30" placeholder="Código Postal" formControlName="zipCode" [ngClass]="{'form-error': form.controls['zipCode'].touched && (form.controls['zipCode'].errors?.required || form.controls['zipCode'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['zipCode'].touched && form.controls['zipCode'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ciudad" formControlName="city" [ngClass]="{'form-error': form.controls['city'].touched && (form.controls['city'].errors?.required || form.controls['city'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['city'].touched && form.controls['city'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="País" formControlName="country" [ngClass]="{'form-error': form.controls['country'].touched && (form.controls['country'].errors?.required || form.controls['country'].errors?.mustMatch )}">
+                <span class="error-message" *ngIf="form.controls['country'].touched && form.controls['country'].errors?.required">
+                    Campo requerido
+                </span>
+            </div>
+        </form>
+        <div class="text-center mb-3">
+            <button class="btn btn-a" (click)="saveChanges()">
+                Guardar datos
+            </button>
+        </div>
+    </div>
+</div>

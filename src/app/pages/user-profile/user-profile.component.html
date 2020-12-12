@@ -1,1 +1,71 @@
-<p>user-profile works!</p>
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Mi Perfil</h1>
+                    <div class="media">
+                        <img [src]="user?.imgProfile" class="mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0"> {{ user?.name }} </h5>
+                            <p> {{ user?.email }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/crear-propiedad']">Subir propiedad</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    <app-change-password></app-change-password>
+    <app-edit-profile [user]="user"></app-edit-profile>
+    <div class="col-md-10 offset-md-1">
+        <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Propiedades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Datos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Configuración</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                <app-user-properties></app-user-properties>
+            </div>
+            <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                <app-user-info></app-user-info>
+            </div>
+            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <div class="pt-3 settings-options">
+                    <ul class="pl-0">
+                        <li>
+                            <a data-toggle="modal" data-target="#changeNameModal">
+                                <fa-icon [icon]="faUserEdit"></fa-icon> Editar Nombre </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="#changePasswordModal">
+                                <fa-icon [icon]="faAsterisk"></fa-icon> Cambiar Password
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="logout()" class="logout">
+                                <fa-icon [icon]="faSingOut"></fa-icon> Cerrar Sesión </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

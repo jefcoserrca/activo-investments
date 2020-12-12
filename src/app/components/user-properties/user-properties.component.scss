@@ -1,0 +1,43 @@
+.text-grey {
+    color: grey;
+}
+
+.price {
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 0px !important;
+}
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.message {
+    text-align: center;
+    color: #c8c8c8;
+    fa-icon {
+        font-size: 4rem;
+    }
+}
+
+.btn {
+    transition: .5s ease;
+}
+
+.btn.btn-a {
+    border-radius: 0;
+    padding: 0.25rem 3rem;
+    letter-spacing: .05rem;
+}
+
+.btn.btn-a {
+    background-color: #2eca6a;
+    color: #000000;
+}
+
+.btn.btn-a:hover {
+    background-color: #258048;
+    color: #ffffff;
+}

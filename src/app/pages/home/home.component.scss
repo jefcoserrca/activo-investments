@@ -379,3 +379,82 @@ a:hover {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
 }
+
+.form-as #sendmessage {
+    color: #2eca6a;
+    border: 1px solid #26a356;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #errormessage {
+    color: red;
+    display: none;
+    border: 1px solid red;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #sendmessage.show,
+.form-as #errormessage.show,
+.form-as .show {
+    display: block;
+}
+
+.form-as .validation {
+    color: red;
+    display: none;
+    margin: 4px 0 20px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.form-as label {
+    color: #000000 !important;
+    position: relative !important;
+}
+
+.form-as select.form-control-lg:not([size]):not([multiple]) {
+    height: 3.5rem;
+}
+
+.form-as .form-control {
+    border-radius: 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 300 !important;
+}
+
+.form-as .form-control.form-control-a {
+    height: 3.5rem;
+}
+
+.form-as .form-control:focus {
+    box-shadow: none;
+    border-color: #75b18c !important;
+}
+
+.form-as .form-error {
+    box-shadow: none;
+    border-color: #ca4d2e;
+}
+
+.btn.btn-a {
+    border-radius: 0 !important;
+    padding: 0.25rem 3rem !important;
+    letter-spacing: .05rem !important;
+}
+
+.btn.btn-a {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.btn.btn-a:hover {
+    background-color: #2eca6a !important;
+    color: #000000 !important;
+}

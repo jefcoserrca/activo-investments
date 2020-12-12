@@ -7,7 +7,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
             </div>
-            <div class="modal-body">
+            <div *ngIf="loading" class="modal-body d-flex justify-content-center">
+                <app-loading></app-loading>
+            </div>
+            <div *ngIf="!loading" class="modal-body">
                 <!--** Facebook Button  -->
                 <div class="text-center my-3">
                     <button class="btn btn-fb" (click)="loginWithFacebook()">
@@ -37,6 +40,9 @@
                         <span class="error-message" *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.required">
                             Contraseña es requerida
                         </span>
+                        <span class="error-message" *ngIf="error">
+                            {{ error }}
+                        </span>
                     </div>
                 </form>
                 <div class="text-center mb-3">
@@ -47,7 +53,7 @@
 
             </div>
             <div class="modal-footer">
-                <a href="">
+                <a (click)="passwordRecovery()">
                     Olvidaste tu password?
                 </a>
             </div>

@@ -1,0 +1,40 @@
+<div class="modal fade" id="changeNameModal" tabindex="-1" role="dialog" aria-labelledby="changeNameModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changenameModalLabel">Cambiar nombre de usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <span class="error-message text-center" *ngIf="error">
+               <fa-icon [icon]="faBomb"></fa-icon> Ops! Ocurrió un error. Vuelve a intentarlo
+            </span>
+            <div *ngIf="loading" class="modal-body d-flex justify-content-center">
+                <app-loading></app-loading>
+            </div>
+            <div *ngIf="!error && !loading && confirmEdit" class="modal-body text-center successful">
+                <fa-icon [icon]="faCheck"></fa-icon> <br>
+                <p>Su perfil se ha actualizado!</p> <br>
+                <button class="btn btn-a" data-dismiss="modal" aria-label="Close">Aceptar</button>
+            </div>
+            <div *ngIf="!loading && !confirmEdit" class="modal-body">
+                <form class="form-as" [formGroup]="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [ngClass]="{'form-error': form.controls['name'].touched && form.controls['name'].errors?.required}">
+                        <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
+                            Nombre es requerido
+                        </span>
+                    </div>
+                </form>
+                <br>
+                <div class="text-center mb-3">
+                    <button class="btn btn-a" (click)="editProfile()">
+                        Ediat Nombre
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

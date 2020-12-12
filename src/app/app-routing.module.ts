@@ -5,6 +5,9 @@ import { EstateListComponent } from './pages/estate-list/estate-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PropiertySingleComponent } from './pages/propierty-single/propierty-single.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AuthService } from './services/auth.service';
+import { CreateOrEditPropertyComponent } from './pages/create-or-edit-property/create-or-edit-property.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,21 @@ const routes: Routes = [
   {
     path: 'propiedad',
     component: PropiertySingleComponent
+  },
+  {
+    path: 'usuario',
+    component: UserProfileComponent,
+    canActivate: [ AuthService]
+  },
+  {
+    path: 'crear-propiedad',
+    component: CreateOrEditPropertyComponent,
+    canActivate: [ AuthService ]
+  },
+  {
+    path: 'edit-propiedad/:id',
+    component: CreateOrEditPropertyComponent,
+    canActivate: [ AuthService ]
   },
   {
     path: '',

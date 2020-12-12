@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
+declare var $: any;
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -9,13 +10,26 @@ import { AuthService } from '../../services/auth.service';
 export class ToolbarComponent implements OnInit {
   faCoffee = faSearch;
   faBars = faBars;
-  isAuth: boolean;
+  isAuth: any;
   constructor(private authService: AuthService) {
-   this.isAuth = this.authService.authenticated.valueOf();
-   console.log(this.isAuth);
+  this.authService.currentUser.subscribe( (user) => {
+    this.isAuth = user;
+  });
   }
 
   ngOnInit(): void {
+    this.searcherInit();
+  }
+
+  searcherInit(): void {
+    $('.navbar-toggle-box-collapse').on('click', () => {
+      console.log('Test');
+      $('body').removeClass('box-collapse-closed').addClass('box-collapse-open');
+    });
+    $('.close-box-collapse, .click-closed').on('click', () => {
+      $('body').removeClass('box-collapse-open').addClass('box-collapse-closed');
+      $('.menu-list ul').slideUp(700);
+    });
   }
 
 }

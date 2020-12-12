@@ -4,16 +4,19 @@ import {  AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { rejects } from 'assert';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivate {
 
   private user: Observable< firebase.User | null>;
 
   constructor(
     private afAuth: AngularFireAuth,
-    private af: AngularFirestore
+    private af: AngularFirestore,
+    private router: Router
   ) {
     this.user = this.afAuth.authState;
   }
@@ -72,5 +75,56 @@ export class AuthService {
 
   FacebookAuth(): Promise<firebase.auth.UserCredential> {
     return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
+  }
+
+  recoveryPassword(formData): Promise<boolean> {
+    return new Promise ( async (resolve, reject) => {
+      try {
+        await this.afAuth.sendPasswordResetEmail(formData.email);
+        resolve(true);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  changePassword(formData): Promise<boolean> {
+    return new Promise ( async (resolve, reject) => {
+      try {
+        const user: firebase.User = firebase.auth().currentUser;
+        const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(user.email, formData.password);
+        await user.reauthenticateWithCredential(credential);
+        await user.updatePassword(formData);
+        resolve(true);
+      }catch (e) {
+        reject(e);
+      }
+    }
+    );
+  }
+
+  logout(): Promise <boolean> {
+    return new Promise( async (resolve, rejec) => {
+      try {
+        await firebase.auth().signOut();
+        resolve(true);
+      } catch (e) {
+        rejects(e);
+      }
+    });
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+
+    return new Promise( (resolve, reject) => {
+      this.afAuth.onAuthStateChanged( (res) => {
+        if (res){
+          resolve(true);
+        }else{
+          this.router.navigateByUrl('');
+          resolve (false);
+        }
+      });
+    });
   }
 }

@@ -4,6 +4,7 @@ import {  faFacebookF  } from '@fortawesome/free-brands-svg-icons';
 import { MustMatch } from '../../helpers/must-match';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -15,8 +16,7 @@ export class SignupComponent implements OnInit {
   fbIncon = faFacebookF;
   signupForm: FormGroup;
   loading = false;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
-    console.log(this.loading);
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -37,6 +37,7 @@ export class SignupComponent implements OnInit {
        console.log(res);
        if (res) {
          $('#signupModal').modal('hide');
+         await this.navigate();
        }
        this.loading = false;
     }
@@ -55,8 +56,14 @@ export class SignupComponent implements OnInit {
       };
 
       await this.authService.saveData(newUser, credential.user.uid);
+      $('#signupModal').modal('hide');
+      await this.navigate();
       this.loading = false;
     }
+  }
+
+  async navigate(): Promise<void> {
+    await this.router.navigateByUrl('/usuario');
   }
 
 }

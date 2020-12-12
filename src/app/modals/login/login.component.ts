@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import {  faFacebookF  } from '@fortawesome/free-brands-svg-icons';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
+import { Router } from '@angular/router';
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +14,11 @@ export class LoginComponent implements OnInit {
   fbIncon = faFacebookF;
   loginForm: FormGroup;
   loading = false;
-
+  error: any;
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,12 +31,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginEmailAndPassword(): Promise<any> {
-    console.log(this.loginForm.valid);
+  async loginEmailAndPassword(): Promise<any> {
+    this.loading = true;
     if (this.loginForm.valid) {
-      console.log('si jala');
+      try {
+        await this.authService.loginWithEmail(this.loginForm.value);
+        $('#loginModal').modal('hide');
+        await this.navigate();
+      } catch (e) {
+        this.error = e.message;
+      }
+      this.loading = false;
     }
-    return;
   }
 
   async loginWithFacebook(): Promise<void> {
@@ -49,8 +58,20 @@ export class LoginComponent implements OnInit {
       };
 
       await this.authService.saveData(newUser, credential.user.uid);
+      $('#loginModal').modal('hide');
+      await this.navigate();
       this.loading = false;
     }
   }
+
+  passwordRecovery(): void {
+    $('#loginModal').modal('hide');
+    $('#recoveryModal').modal('show');
+  }
+
+  async navigate(): Promise<void> {
+    await this.router.navigateByUrl('/usuario');
+  }
+
 
 }

@@ -24,6 +24,13 @@ import { SignupComponent } from './modals/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { PasswordRecoveryComponent } from './modals/password-recovery/password-recovery.component';
+import { UserPropertiesComponent } from './components/user-properties/user-properties.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { CreateOrEditPropertyComponent } from './pages/create-or-edit-property/create-or-edit-property.component';
+import { ChangePasswordComponent } from './modals/change-password/change-password.component';
+import { EditProfileComponent } from './modals/edit-profile/edit-profile.component';
+import { SearcherComponent } from './modals/searcher/searcher.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +48,13 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     SignupComponent,
     LoadingComponent,
     UserProfileComponent,
+    PasswordRecoveryComponent,
+    UserPropertiesComponent,
+    UserInfoComponent,
+    CreateOrEditPropertyComponent,
+    ChangePasswordComponent,
+    EditProfileComponent,
+    SearcherComponent,
   ],
   imports: [
     BrowserModule,

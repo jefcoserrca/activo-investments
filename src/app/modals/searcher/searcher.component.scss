@@ -1,0 +1,240 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #555555;
+}
+
+.box-collapse {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1040;
+    background-color: #ffffff;
+    transform: translateX(100%);
+    transition: all 0.6s ease;
+}
+
+@media (min-width: 768px) {
+    .box-collapse {
+        width: 50%;
+    }
+}
+
+.box-collapse .title-box-d {
+    top: 30px;
+    left: 60px;
+    opacity: 0;
+    transition: all 1s ease;
+    transition-delay: .3s;
+}
+
+@media (max-width: 575px) {
+    .box-collapse .title-box-d {
+        left: 35px;
+    }
+}
+
+@media (max-width: 575px) {
+    .box-collapse .title-box-d .title-d {
+        font-size: 1.3rem;
+    }
+}
+
+.box-collapse-wrap {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 6.5rem;
+    bottom: 5rem;
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    transform: translateY(3rem);
+    transition: transform 0.5s 0.5s ease, opacity 0.5s 0.5s ease;
+}
+
+.box-collapse-open .click-closed {
+    visibility: visible;
+}
+
+.box-collapse-open .box-collapse {
+    transform: translateX(0);
+    box-shadow: 0 0 65px rgba(0, 0, 0, 0.07);
+    opacity: 1;
+}
+
+.box-collapse-open .box-collapse .title-box-d {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.box-collapse-open .box-collapse-wrap {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.box-collapse-closed .box-collapse {
+    opacity: .7;
+    transition-delay: 0s;
+}
+
+.box-collapse-closed .box-collapse .title-box-d {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.box-collapse-closed .box-collapse .form-a {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.click-closed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 1035;
+    background-color: #000000;
+    opacity: .4;
+}
+
+.close-box-collapse {
+    position: absolute;
+    z-index: 1050;
+    top: 2rem;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.right-boxed {
+    right: 4.2857rem;
+}
+
+.form-as #sendmessage {
+    color: #2eca6a;
+    border: 1px solid #26a356;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #errormessage {
+    color: red;
+    display: none;
+    border: 1px solid red;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form-as #sendmessage.show,
+.form-as #errormessage.show,
+.form-as .show {
+    display: block;
+}
+
+.form-as .validation {
+    color: red;
+    display: none;
+    margin: 4px 0 20px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.form-as label {
+    color: #000000;
+    position: relative;
+}
+
+.form-as select.form-control-lg:not([size]):not([multiple]) {
+    height: 3.5rem;
+}
+
+.form-as .form-control {
+    border-radius: 0;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.form-as .form-control.form-control-a {
+    height: 3.5rem;
+}
+
+.form-as .form-control:focus {
+    box-shadow: none;
+    border-color: #2eca6a;
+}
+
+.btn {
+    transition: .5s ease;
+}
+
+.btn.btn-a,
+.btn.btn-b {
+    border-radius: 0;
+    padding: 1rem 3rem;
+    letter-spacing: .05rem;
+}
+
+.btn.btn-a {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn.btn-a:hover {
+    background-color: #2eca6a;
+    color: #000000;
+}
+
+.btn.btn-b {
+    background-color: #2eca6a;
+    color: #000000;
+}
+
+.btn.btn-b:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn.btn-b-n {
+    background-color: #2eca6a;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.btn.btn-b-n:hover {
+    background-color: #26a356;
+    color: #ffffff;
+}
+
+.title-box-d {
+    padding-bottom: 1.8rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.title-box-d .title-d {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.title-box-d .title-d:after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 4px;
+    background-color: #2eca6a;
+    bottom: 20px;
+    left: 0;
+}
