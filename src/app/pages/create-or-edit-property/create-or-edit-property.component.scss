@@ -62,3 +62,48 @@
 .btn {
     transition: .5s ease;
 }
+
+.add-picture-btn {
+    border: solid 1px;
+    border-radius: 0px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background: #f4f4f4;
+    &:hover {
+        background: #d3d3d3;
+    }
+    fa-icon {
+        font-size: 28px;
+    }
+}
+
+.img-container {
+    width: 250px;
+    height: 250px;
+    background-position: center;
+    margin: 1rem;
+    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.09);
+}
+
+.slider {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+    .slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .container-slide {
+        display: flex;
+        overflow: auto;
+    }
+}

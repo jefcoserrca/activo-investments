@@ -55,6 +55,9 @@
                         <span class="error-message" *ngIf="signupForm.controls['confirmPassword'].touched && signupForm.controls['confirmPassword'].errors?.mustMatch">
                             Las contraseñas no coinciden
                         </span>
+                        <span class="error-message" *ngIf="error">
+                            {{ error }}
+                        </span>
                     </div>
                 </form>
                 <div class="text-center mb-3">

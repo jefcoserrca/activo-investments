@@ -8,6 +8,7 @@ import { PropiertySingleComponent } from './pages/propierty-single/propierty-sin
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AuthService } from './services/auth.service';
 import { CreateOrEditPropertyComponent } from './pages/create-or-edit-property/create-or-edit-property.component';
+import { NoticePrivacyComponent } from './pages/notice-privacy/notice-privacy.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
     component: PropiertySingleComponent
   },
   {
+    path: 'aviso-de-privacidad',
+    component: NoticePrivacyComponent
+  },
+  {
     path: 'usuario',
     component: UserProfileComponent,
     canActivate: [ AuthService]
@@ -41,7 +46,7 @@ const routes: Routes = [
     canActivate: [ AuthService ]
   },
   {
-    path: 'edit-propiedad/:id',
+    path: 'editar-propiedad/:id',
     component: CreateOrEditPropertyComponent,
     canActivate: [ AuthService ]
   },

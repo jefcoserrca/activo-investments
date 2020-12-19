@@ -102,24 +102,15 @@
 }
 
 .php-email-form .validate {
-    display: none;
+    display: block;
     color: red;
     margin: 0 0 15px 0;
     font-weight: 400;
     font-size: 13px;
 }
 
-.php-email-form .error-message {
-    display: none;
-    color: #fff;
-    background: #ed3c0d;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-}
-
 .php-email-form .sent-message {
-    display: none;
+    display: block;
     color: #fff;
     background: #18d26e;
     text-align: center;
@@ -208,4 +199,16 @@
 .btn.btn-a:hover {
     background-color: #2eca6a;
     color: #000000;
+}
+
+.error-message {
+    color: #ed3c0d;
+    padding: 0.5rem;
+    font-weight: 600;
+}
+
+.icon-box-content {
+    li a {
+        font-size: 28px;
+    }
 }

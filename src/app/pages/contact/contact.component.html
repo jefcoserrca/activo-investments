@@ -28,42 +28,52 @@
                 <div class="row">
                     <div class="col-md-7">
                         <!-- method="post"  -->
-                        <form formGroup="" class="php-email-form">
+                        <form [formGroup]="form" class="php-email-form" (ngSubmit)="send()">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                                        <div class="validate"></div>
+                                        <input type="text" formControlName="name" class="form-control form-control-lg form-control-a" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                        <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
+                                            Nombre es requerido
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Correo" data-rule="email" data-msg="Please enter a valid email">
-                                        <div class="validate"></div>
+                                        <input name="email" formControlName="email" class="form-control form-control-lg form-control-a" placeholder="Correo" data-rule="email" data-msg="Please enter a valid email">
+                                        <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.required">
+                                            Correo es requerido
+                                        </span>
+                                        <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.pattern">
+                                            Formato no válido
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                                        <div class="validate"></div>
+                                        <input type="text" formControlName="subject" class="form-control form-control-lg form-control-a" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
-                                        <div class="validate"></div>
+                                        <textarea name="message" class="form-control" formControlName="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
+                                        <span class="error-message" *ngIf="form.controls['message'].touched && form.controls['message'].errors?.required">
+                                            Mensaje es requerido
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-3" *ngIf="showMessage">
                                     <div class="mb-3">
-                                        <div class="loading">Cargando</div>
-                                        <div class="error-message"></div>
                                         <div class="sent-message">Mensaje enviado</div>
                                     </div>
                                 </div>
+                                <div *ngIf="showLoading" class="modal-body d-flex justify-content-center">
+                                    <app-loading></app-loading>
+                                </div>
 
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-a">Enviar Mensaje</button>
+                                    <button type="submit" [disabled]="!form.valid && !showLoading" class="btn btn-a">Enviar Mensaje</button>
                                 </div>
                             </div>
                         </form>
@@ -79,7 +89,7 @@
                                 </div>
                                 <div class="icon-box-content">
                                     <p class="mb-1">Email.
-                                        <span class="color-a">andmarti1224@gmail.com</span>
+                                        <span class="color-a">activoi.contacto@gmail.com</span>
                                     </p>
                                     <p class="mb-1">Teléfono.
                                         <span class="color-a">+52 442 320 5886</span>
@@ -116,17 +126,17 @@
                                     <div class="socials-footer">
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
-                                                <a href="#" class="link-one">
+                                                <a href="https://fb.me/activoi" target="_blank" class="link-one">
                                                     <fa-icon [icon]="faFacebook" aria-hidden="true"></fa-icon>
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="#" class="link-one">
+                                                <a href="https://www.instagram.com/activoi/" target="_blank" class="link-one">
                                                     <fa-icon [icon]="faInstagram" aria-hidden="true"></fa-icon>
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="#" class="link-one">
+                                                <a href="https://www.youtube.com/channel/UCkrXfdafrEB7mg4Bn4KxgWw" target="_blank" class="link-one">
                                                     <fa-icon [icon]="faYoutube" aria-hidden="true"></fa-icon>
                                                 </a>
                                             </li>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -31,6 +31,9 @@ import { CreateOrEditPropertyComponent } from './pages/create-or-edit-property/c
 import { ChangePasswordComponent } from './modals/change-password/change-password.component';
 import { EditProfileComponent } from './modals/edit-profile/edit-profile.component';
 import { SearcherComponent } from './modals/searcher/searcher.component';
+import { NoticePrivacyComponent } from './pages/notice-privacy/notice-privacy.component';
+import { EmailSenderService } from './services/email-sender.service';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { SearcherComponent } from './modals/searcher/searcher.component';
     ChangePasswordComponent,
     EditProfileComponent,
     SearcherComponent,
+    NoticePrivacyComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +70,13 @@ import { SearcherComponent } from './modals/searcher/searcher.component';
     CarouselModule,
     AngularFireAuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EmailSenderService,
+    NgxImageCompressService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   fbIncon = faFacebookF;
   signupForm: FormGroup;
   loading = false;
+  error: string;
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
   }
   ngOnInit(): void {
@@ -33,7 +34,10 @@ export class SignupComponent implements OnInit {
   async createUser(): Promise<void> {
     this.loading = true;
     if (this.signupForm.valid) {
-       const res = await this.authService.createUser(this.signupForm.value);
+       const res = await this.authService.createUser(this.signupForm.value).catch((e) => {
+        this.loading = false;
+        this.error = e.message;
+      });
        console.log(res);
        if (res) {
          $('#signupModal').modal('hide');
@@ -45,7 +49,10 @@ export class SignupComponent implements OnInit {
 
   async registerWithFacebook(): Promise<void> {
     this.loading = true;
-    const credential = await this.authService.FacebookAuth();
+    const credential = await this.authService.FacebookAuth().catch((e) => {
+      this.loading = false;
+      this.error = e.message;
+    });
     if (credential) {
 
       const newUser: User = {
