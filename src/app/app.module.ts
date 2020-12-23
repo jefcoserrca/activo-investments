@@ -34,6 +34,7 @@ import { SearcherComponent } from './modals/searcher/searcher.component';
 import { NoticePrivacyComponent } from './pages/notice-privacy/notice-privacy.component';
 import { EmailSenderService } from './services/email-sender.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,10 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.maps,
+      libraries: ['places']
+    }),
     HttpClientModule
   ],
   providers: [

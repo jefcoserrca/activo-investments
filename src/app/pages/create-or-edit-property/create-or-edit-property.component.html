@@ -20,6 +20,9 @@
 </section>
 <section>
     <div class="container">
+        <div class="row">
+            <h3 class="title pb-3">Paso 1 <small>Añade fotos de la propiedad</small></h3>
+        </div>
         <div class="row" style="align-items: center; justify-content: center;">
             <div class="container-slide">
                 <div class="slider">
@@ -35,6 +38,73 @@
                 <fa-icon [icon]="faCamera"></fa-icon>
                 <p>Añadir Foto</p>
             </button>
+        </div>
+        <div class="pt-3">
+            <div>
+
+                <h3 class="title pb-3">Paso 2 <small>Ubica la propiedad en el mapa</small></h3>
+                <input style="width: 100%;" [(ngModel)]="address" class="input-search" #search (keydown.enter)="$event.preventDefault()" type="text" placeholder="Introduce tu dirección...">
+                <agm-map [latitude]="coords.latitude" [longitude]="coords.longitude" [zoom]="zoom">
+                    <agm-marker [latitude]="coords.latitude" [longitude]="coords.longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+                </agm-map>
+            </div>
+        </div>
+        <div class="pt-5">
+            <div>
+
+                <h3 class="title pb-3">Paso 3 <small>Detalla información de la propiedad</small></h3>
+                <form [formGroup]="form" class="form-as">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="Colonia" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="Colonia" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                    <h3 class="title pb-3">Paso 4 <small>Confirma la localización</small></h3>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ciudad" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="Estado" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="Código postal" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" placeholder="País" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                                Colonia es requerido
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>
