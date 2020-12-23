@@ -39,14 +39,16 @@ export class CreateOrEditPropertyComponent implements OnInit {
   initForm(): void {
     this.form = this.builder.group({
       suburb: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
+      zipCode: new FormControl(),
       area: new FormControl('', Validators.required),
       rooms: new FormControl('', Validators.required),
       youtube: new FormControl(),
       images: new FormControl([], Validators.required),
-      zipCode: new FormControl(),
       price: new FormControl('', Validators.required),
       description: new FormControl(''),
+      type: new FormControl('')
     });
   }
   initMap(): void{
