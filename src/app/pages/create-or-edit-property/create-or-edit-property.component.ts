@@ -21,34 +21,36 @@ export class CreateOrEditPropertyComponent implements OnInit {
   zoom: number;
   geoCoder: any;
   address: string;
+  amenities = [ 'Alberca'];
   @ViewChild('search', {static: false}) public searchElementRef: ElementRef;
 
   constructor(private activatedRoute: ActivatedRoute,
               private imageCompress: NgxImageCompressService,
-              private builder: FormBuilder,
+              private formBuilder: FormBuilder,
               private mapsAPILoader: MapsAPILoader,
               private ngZone: NgZone) {
   }
 
   async ngOnInit(): Promise<void> {
-    this.path = (await this.activatedRoute.url.pipe(first()).toPromise())[0].path;
-    this.initMap();
     this.initForm();
+    this.path = (await this.activatedRoute.url.pipe(first()).toPromise())[0].path;
+    await this.initMap();
   }
 
   initForm(): void {
-    this.form = this.builder.group({
-      suburb: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      zipCode: new FormControl(),
+    this.form = this.formBuilder.group({
       area: new FormControl('', Validators.required),
       rooms: new FormControl('', Validators.required),
-      youtube: new FormControl(),
-      images: new FormControl([], Validators.required),
-      price: new FormControl('', Validators.required),
       description: new FormControl(''),
-      type: new FormControl('')
+      youtubeUrl: new FormControl(''),
+      price: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      typeProperty: new FormControl('', Validators.required),
+      suburb: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      zipCode: new FormControl('', Validators.required),
+      country: new FormControl(''),
     });
   }
   initMap(): void{
@@ -113,7 +115,17 @@ export class CreateOrEditPropertyComponent implements OnInit {
         const suburb = geocoder.find( (address) => {
           return address.types[0] === 'sublocality_level_1';
         });
-        console.log(state, city, zipcode, suburb);
+
+        const country = geocoder.find( (address) => {
+          return address.types[0] === 'country';
+        });
+        console.log(geocoder);
+
+        this.form.controls.suburb.setValue(suburb?.long_name);
+        this.form.controls.city.setValue(city?.long_name);
+        this.form.controls.state.setValue(state?.long_name);
+        this.form.controls.zipCode.setValue(zipcode?.long_name);
+        this.form.controls.country.setValue('MX');
         this.address = results[0].formatted_address;
 
       } else {

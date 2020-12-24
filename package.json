@@ -31,6 +31,7 @@
         "firebase": "^8.1.1",
         "firebase-tools": "^8.16.2",
         "jquery": "^3.5.1",
+        "ngx-chips": "^2.2.2",
         "ngx-image-compress": "^11.0.3",
         "ngx-owl-carousel-o": "^4.0.0",
         "rxjs": "~6.6.0",

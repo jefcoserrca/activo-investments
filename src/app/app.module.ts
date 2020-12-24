@@ -35,6 +35,8 @@ import { NoticePrivacyComponent } from './pages/notice-privacy/notice-privacy.co
 import { EmailSenderService } from './services/email-sender.service';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { AgmCoreModule } from '@agm/core';
+import { StepPaymentComponent } from './pages/create-or-edit-property/step-payment/step-payment.component';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { AgmCoreModule } from '@agm/core';
     EditProfileComponent,
     SearcherComponent,
     NoticePrivacyComponent,
+    StepPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: environment.maps,
       libraries: ['places']
     }),
-    HttpClientModule
+    HttpClientModule,
+    TagInputModule,
   ],
   providers: [
     EmailSenderService,
