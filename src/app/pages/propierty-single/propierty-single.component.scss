@@ -43,6 +43,12 @@
     padding-left: 0;
 }
 
+.intro-single .title-single {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .gallery-property {
     margin-bottom: 3rem;
 }
@@ -474,4 +480,17 @@ card-box-c {
     height: 2px;
     background-color: #2eca6a;
     z-index: 2;
+}
+
+.banner {
+    width: 100%;
+    height: 55vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+agm-map {
+    width: 100%;
+    height: 50vh;
 }

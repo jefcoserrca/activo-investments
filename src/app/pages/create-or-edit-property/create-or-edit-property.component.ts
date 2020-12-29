@@ -1,11 +1,14 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCamera, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { Coords } from '../../interfaces/coords';
+import { AuthService } from 'src/app/services/auth.service';
+import { PropertyService } from 'src/app/services/property.service';
+import { Property } from 'src/app/interfaces/property';
 declare var google: any;
 @Component({
   selector: 'app-create-or-edit-property',
@@ -13,6 +16,8 @@ declare var google: any;
   styleUrls: ['./create-or-edit-property.component.scss']
 })
 export class CreateOrEditPropertyComponent implements OnInit {
+  back = faArrowLeft;
+  delete = faTimesCircle;
   path: any;
   faCamera = faCamera;
   images: any[] = [];
@@ -21,19 +26,29 @@ export class CreateOrEditPropertyComponent implements OnInit {
   zoom: number;
   geoCoder: any;
   address: string;
+  uid: string;
+  loading = false;
+  valid: boolean;
   amenities = [ 'Alberca'];
+  newProperty: Property;
+  stepeer = 'step1';
   @ViewChild('search', {static: false}) public searchElementRef: ElementRef;
 
   constructor(private activatedRoute: ActivatedRoute,
               private imageCompress: NgxImageCompressService,
               private formBuilder: FormBuilder,
               private mapsAPILoader: MapsAPILoader,
-              private ngZone: NgZone) {
+              private ngZone: NgZone,
+              private authService: AuthService,
+              private propertySrv: PropertyService) {
   }
 
   async ngOnInit(): Promise<void> {
     this.initForm();
     this.path = (await this.activatedRoute.url.pipe(first()).toPromise())[0].path;
+    console.log(this.path);
+    const user = await this.authService.currentUser.pipe(first()).toPromise();
+    this.uid = user.uid;
     await this.initMap();
   }
 
@@ -41,7 +56,8 @@ export class CreateOrEditPropertyComponent implements OnInit {
     this.form = this.formBuilder.group({
       area: new FormControl('', Validators.required),
       rooms: new FormControl('', Validators.required),
-      description: new FormControl(''),
+      baths: new FormControl('', ),
+      description: new FormControl('', Validators.required),
       youtubeUrl: new FormControl(''),
       price: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
@@ -119,7 +135,7 @@ export class CreateOrEditPropertyComponent implements OnInit {
         const country = geocoder.find( (address) => {
           return address.types[0] === 'country';
         });
-        console.log(geocoder);
+        console.log(results[0]);
 
         this.form.controls.suburb.setValue(suburb?.long_name);
         this.form.controls.city.setValue(city?.long_name);
@@ -142,6 +158,38 @@ export class CreateOrEditPropertyComponent implements OnInit {
     this.coords.latitude = $event.latLng.lat();
     this.coords.longitude = $event.latLng.lng();
     this.getAddress(this.coords.latitude, this.coords.longitude);
+    }
+
+    saveProperty(): void {
+      if (this.images.length > 0) {
+        this.newProperty = {
+          ...this.form.value,
+          address: this.address,
+          amenities: this.amenities,
+          coords: this.coords,
+          images: this.images,
+          uid: this.uid
+        };
+        this.loading = true;
+        this.stepeer = 'step2';
+        setTimeout(() => {
+          this.loading = false;
+        }, 800);
+      } else {
+        window.alert('Debes añadir al menos una imagen');
+      }
+    }
+
+    backStep(): void {
+      this.loading = true;
+      setTimeout(() => {
+        this.stepeer = 'step1';
+        this.loading = false;
+      }, 350);
+    }
+
+    deleteImage(index: number): void {
+      this.images.splice(index, 1);
     }
 
 }

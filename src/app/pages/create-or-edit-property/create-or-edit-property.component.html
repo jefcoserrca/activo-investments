@@ -3,22 +3,20 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single"> {{ path === 'crear-propiedad' ? 'Crear Propiedad': 'Editar Propiedad'}}</h1>
+                    <h1 class="title-single"> {{ path === 'crear-propiedad' ? 'Crear Propiedad': 'Editar Propiedad'}}
+                    </h1>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
                 <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <button class="btn btn-a"> Publicar propiedad </button>
-                        </li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </section>
-<section>
+<section *ngIf="!loading && stepeer === 'step1'">
     <div class="container">
         <div class="row">
             <h3 class="title pb-3">Paso 1 <small>Añade fotos de la propiedad</small></h3>
@@ -26,10 +24,14 @@
         <div class="row" style="align-items: center; justify-content: center;">
             <div class="container-slide">
                 <div class="slider">
-                    <div *ngFor="let img of images;" class="img-container" [ngStyle]="{'background-image':
+                    <div *ngFor="let img of images; let i = index" class="img-container" [ngStyle]="{'background-image':
                     'url(' +
                     img +
                     ')'}">
+
+                    <div class="delete-container">
+                        <fa-icon [icon]="delete" (click)="deleteImage(i)"></fa-icon>
+                    </div>
 
                     </div>
                 </div>
@@ -43,10 +45,12 @@
             <div>
 
                 <h3 class="title pb-3">Paso 2 <small>Ubica la propiedad en el mapa</small></h3>
-                <input style="width: 100%;" [(ngModel)]="address" class="input-search" #search (keydown.enter)="$event.preventDefault()" type="text" placeholder="Introduce tu dirección...">
+                <input style="width: 100%;" [(ngModel)]="address" class="input-search" #search
+                    (keydown.enter)="$event.preventDefault()" type="text" placeholder="Introduce tu dirección...">
                 <br>
                 <agm-map [latitude]="coords.latitude" [longitude]="coords.longitude" [zoom]="zoom">
-                    <agm-marker [latitude]="coords.latitude" [longitude]="coords.longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+                    <agm-marker [latitude]="coords.latitude" [longitude]="coords.longitude" [markerDraggable]="true"
+                        (dragEnd)="markerDragEnd($event)"></agm-marker>
                 </agm-map>
             </div>
         </div>
@@ -59,47 +63,66 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="area"> Área en m² * </label>
-                                <input type="number" placeholder="Área en metros cuadrados" class="form-control" formControlName="area" [ngClass]="{'form-error': form.controls['area'].touched && (form.controls['area'].errors?.required )}">
-                                <span class="error-message" *ngIf="form.controls['area'].touched && form.controls['area'].errors?.required">
+                                <input type="number" placeholder="Área en metros cuadrados" class="form-control"
+                                    formControlName="area"
+                                    [ngClass]="{'form-error': form.controls['area'].touched && (form.controls['area'].errors?.required )}">
+                                <span class="error-message"
+                                    *ngIf="form.controls['area'].touched && form.controls['area'].errors?.required">
                                     Área es requerido
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                
+
                                 <label for="rooms"> Número de habitaciones* </label>
-                                <input type="number" placeholder="Habitaciones" class="form-control" formControlName="rooms" [ngClass]="{'form-error': form.controls['rooms'].touched && (form.controls['rooms'].errors?.required || form.controls['rooms'].errors?.pattern )}">
-                                <span class="error-message" *ngIf="form.controls['rooms'].touched && form.controls['rooms'].errors?.required">
-                                   Habitaciones es requerido
+                                <input type="number" placeholder="Habitaciones" class="form-control"
+                                    formControlName="rooms"
+                                    [ngClass]="{'form-error': form.controls['rooms'].touched && (form.controls['rooms'].errors?.required || form.controls['rooms'].errors?.pattern )}">
+                                <span class="error-message"
+                                    *ngIf="form.controls['rooms'].touched && form.controls['rooms'].errors?.required">
+                                    Habitaciones es requerido
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
+
                         <div class="col-md-6">
                             <div class="form-group">
-                                
+
+                                <label for="rooms"> Número de baños</label>
+                                <input type="number" placeholder="Baños" class="form-control" formControlName="baths">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+
                                 <label for="rooms"> Tipo de Inmueble </label>
-                                <select class="custom-select form-control"  formControlName="typeProperty"  placeholder="Selecciona una">
+                                <select class="custom-select form-control" formControlName="typeProperty"
+                                    placeholder="Selecciona una">
                                     <option value="venta">Casa</option>
                                     <option value="renta">Departamento</option>
                                     <option value="renta-vacaional">Local</option>
                                     <option value="terrenos">Oficina</option>
                                     <option value="traspaso">Otro</option>
                                 </select>
-                                <span class="error-message" *ngIf="form.controls['typeProperty'].touched && form.controls['typeProperty'].errors?.required">
-                                    Habitaciones es requerido
-                                 </span>
+                                <span class="error-message"
+                                    *ngIf="form.controls['typeProperty'].touched && form.controls['typeProperty'].errors?.required">
+                                    Tipo de inmueble es requerido
+                                </span>
                             </div>
+                        </div>
                     </div>
-                </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="area"> Descripción* </label>
-                                <textarea type="text"  cols="30" rows="8" placeholder="Describe aquí la propiedad..." class="form-control" formControlName="description" [ngClass]="{'form-error': form.controls['description'].touched && (form.controls['description'].errors?.required || form.controls['description'].errors?.pattern )}"></textarea>
-                                <span class="error-message" *ngIf="form.controls['description'].touched && form.controls['description'].errors?.required">
+                                <textarea type="text" cols="30" rows="8" placeholder="Describe aquí la propiedad..."
+                                    class="form-control" formControlName="description"
+                                    [ngClass]="{'form-error': form.controls['description'].touched && (form.controls['description'].errors?.required || form.controls['description'].errors?.pattern )}"></textarea>
+                                <span class="error-message"
+                                    *ngIf="form.controls['description'].touched && form.controls['description'].errors?.required">
                                     Descripción es requerido
                                 </span>
                             </div>
@@ -110,8 +133,9 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="youtubeUrl"> Link de Youtube </label>
-                                <input type="text" placeholder="Pega aquí un link de Youtube" class="form-control" formControlName="youtubeUrl">
-                               
+                                <input type="text" placeholder="Pega aquí un link de Youtube" class="form-control"
+                                    formControlName="youtubeUrl">
+
                             </div>
                         </div>
                     </div>
@@ -119,87 +143,118 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="precio"> Precio* </label>
-                                <input type="number" placeholder="Precio en MXN" class="form-control" formControlName="price" [ngClass]="{'form-error': form.controls['price'].touched && (form.controls['price'].errors?.required || form.controls['price'].errors?.pattern )}">
-                                <span class="error-message" *ngIf="form.controls['price'].touched && form.controls['price'].errors?.required">
+                                <input type="number" placeholder="Precio en MXN" class="form-control"
+                                    formControlName="price"
+                                    [ngClass]="{'form-error': form.controls['price'].touched && (form.controls['price'].errors?.required || form.controls['price'].errors?.pattern )}">
+                                <span class="error-message"
+                                    *ngIf="form.controls['price'].touched && form.controls['price'].errors?.required">
                                     Precio es requerido
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                
+
                                 <label for="rooms"> Tipo de Oferta </label>
-                                <select class="custom-select form-control"  formControlName="type"  placeholder="Selecciona una">
+                                <select class="custom-select form-control" formControlName="type"
+                                    placeholder="Selecciona una">
                                     <option value="venta">Venta</option>
                                     <option value="renta">Renta</option>
                                     <option value="renta-vacaional">Renta Vacacional</option>
                                     <option value="terrenos">Terrenos</option>
                                     <option value="traspaso">Traspaso</option>
                                 </select>
-                                <span class="error-message" *ngIf="form.controls['type'].touched && form.controls['type'].errors?.required">
-                                    Habitaciones es requerido
-                                 </span>
+                                <span class="error-message"
+                                    *ngIf="form.controls['type'].touched && form.controls['type'].errors?.required">
+                                    Seleccione tipo de oferta
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 pb-4">
-                            
-                            <label for="precio"> Amenidades <br><small>Presiona Enter despues de cada amenidad</small> </label>
-                            <tag-input [(ngModel)]="amenities"
-                            theme="dark" [ngModelOptions]="{standalone: true}" [clearOnBlur]="true" placeholder="Nueva Amenidad" secondaryPlaceholder="Escribe aquí...">
-                 </tag-input>
+
+                            <label for="precio"> Amenidades <br><small>Presiona Enter despues de cada amenidad</small>
+                            </label>
+                            <tag-input [(ngModel)]="amenities" theme="dark" [ngModelOptions]="{standalone: true}"
+                                [clearOnBlur]="true" placeholder="Nueva Amenidad"
+                                secondaryPlaceholder="Escribe aquí...">
+                            </tag-input>
 
                         </div>
                     </div>
                     <h3 class="title pb-3">Paso 4 <small>Confirma la localización</small></h3>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Colonia" class="form-control" formControlName="suburb" [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
-                            <span class="error-message" *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
+                            <input type="text" placeholder="Colonia" class="form-control" formControlName="suburb"
+                                [ngClass]="{'form-error': form.controls['suburb'].touched && (form.controls['suburb'].errors?.required || form.controls['suburb'].errors?.pattern )}">
+                            <span class="error-message"
+                                *ngIf="form.controls['suburb'].touched && form.controls['suburb'].errors?.required">
                                 Colonia es requerido
                             </span>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Ciudad" class="form-control" formControlName="city" [ngClass]="{'form-error': form.controls['city'].touched && (form.controls['city'].errors?.required || form.controls['city'].errors?.pattern )}">
-                            <span class="error-message" *ngIf="form.controls['city'].touched && form.controls['city'].errors?.required">
+                            <input type="text" placeholder="Ciudad" class="form-control" formControlName="city"
+                                [ngClass]="{'form-error': form.controls['city'].touched && (form.controls['city'].errors?.required || form.controls['city'].errors?.pattern )}">
+                            <span class="error-message"
+                                *ngIf="form.controls['city'].touched && form.controls['city'].errors?.required">
                                 Ciudad es requerido
                             </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Estado" class="form-control" formControlName="state" [ngClass]="{'form-error': form.controls['state'].touched && (form.controls['state'].errors?.required || form.controls['state'].errors?.pattern )}">
-                            <span class="error-message" *ngIf="form.controls['state'].touched && form.controls['state'].errors?.required">
-                               Estado es requerido
+                            <input type="text" placeholder="Estado" class="form-control" formControlName="state"
+                                [ngClass]="{'form-error': form.controls['state'].touched && (form.controls['state'].errors?.required || form.controls['state'].errors?.pattern )}">
+                            <span class="error-message"
+                                *ngIf="form.controls['state'].touched && form.controls['state'].errors?.required">
+                                Estado es requerido
                             </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="number" placeholder="Código Postal" class="form-control" formControlName="zipCode" [ngClass]="{'form-error': form.controls['zipCode'].touched && (form.controls['zipCode'].errors?.required || form.controls['zipCode'].errors?.pattern )}">
-                            <span class="error-message" *ngIf="form.controls['zipCode'].touched && form.controls['zipCode'].errors?.required">
+                            <input type="number" placeholder="Código Postal" class="form-control"
+                                formControlName="zipCode"
+                                [ngClass]="{'form-error': form.controls['zipCode'].touched && (form.controls['zipCode'].errors?.required || form.controls['zipCode'].errors?.pattern )}">
+                            <span class="error-message"
+                                *ngIf="form.controls['zipCode'].touched && form.controls['zipCode'].errors?.required">
                                 Código postal es requerido
                             </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text"  placeholder="País" class="form-control" formControlName="country" [ngClass]="{'form-error': form.controls['country'].touched && (form.controls['country'].errors?.required || form.controls['country'].errors?.pattern )}">
-                            <span class="error-message" *ngIf="form.controls['country'].touched && form.controls['country'].errors?.required">
+                            <input type="text" placeholder="País" class="form-control" formControlName="country"
+                                [ngClass]="{'form-error': form.controls['country'].touched && (form.controls['country'].errors?.required || form.controls['country'].errors?.pattern )}">
+                            <span class="error-message"
+                                *ngIf="form.controls['country'].touched && form.controls['country'].errors?.required">
                                 País requerido
                             </span>
                         </div>
                     </div>
                     <div class="row justify-content-center py-4">
-                        
-                        <button class="btn btn-a"> Publicar propiedad </button>
+
+                        <button class="btn btn-a" [disabled]="!form.valid"
+                            (click)="saveProperty()"> Publicar propiedad </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</section>
+<section *ngIf="loading">
+    <app-loading></app-loading>
+</section>
+
+<section *ngIf="!loading && stepeer === 'step2'">
+    <div class="d-flex m-4">
+        <button class="btn btn-outline-dark back" (click)="backStep()">
+           <fa-icon [icon]="back"></fa-icon> ATRÁS
+        </button>
+    </div>
+    <app-step-payment [property]="newProperty"></app-step-payment>
 </section>

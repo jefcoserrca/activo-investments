@@ -28,7 +28,7 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'propiedad',
+    path: 'propiedad/:id',
     component: PropiertySingleComponent
   },
   {

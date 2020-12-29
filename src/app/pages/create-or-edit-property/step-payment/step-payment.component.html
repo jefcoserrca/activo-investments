@@ -1,1 +1,74 @@
-<p>step-payment works!</p>
+<section class="pricing-table">
+    <div class="container">
+        <div class="block-heading">
+            <h2>Paso 5</h2>
+            <p>Útimo paso, selecciona un tipo de plan para la publicación de tu propiedad</p>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="item" [ngClass]="{'selected': package === 'free'}">
+                    <div class="heading">
+                        <h3>Gratis</h3>
+                    </div>
+                    <p>Publica tu propiedad gratis.</p> <br>
+                    <div class="features">
+                        <h4><span class="feature">En Novedades</span> : <span class="value">No</span></h4>
+                        <h4><span class="feature">En Recomendados</span> : <span class="value">No</span></h4>
+                        <h4><span class="feature">Duración</span> : <span class="value">30 Days</span></h4>
+                    </div>
+                    <div class="price">
+                        <h4>$0.00 MXN</h4>
+                    </div>
+                    <button *ngIf="package !== 'free'" class="btn btn-block btn-outline-dark" (click)="changePackage('free')">Seleccionar</button>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <div class="item" [ngClass]="{'selected': package === 'pro'}">
+                    <div class="ribbon">Best Value</div>
+                    <div class="heading">
+                        <h3>PRO</h3>
+                    </div>
+                    <p>Publica tu propiedad con beneficios.</p>
+                    <div class="features">
+                        <h4><span class="feature">En Novedades</span> : <span class="value">Si</span></h4>
+                        <h4><span class="feature">En Recomendados</span> : <span class="value">Si</span></h4>
+                        <h4><span class="feature">Duración</span> : <span class="value">Ilimitado</span></h4>
+                    </div>
+                    <div class="price">
+                        <h4>$99.00 MXN</h4>
+                    </div>
+                    
+                    <button class="btn btn-block btn-outline-dark" *ngIf="package !== 'pro'" (click)="changePackage('pro')">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row pt-0 justify-content-center">
+            <div class="col-6" *ngIf="package === 'free'">
+                <app-loading *ngIf="loading"></app-loading>
+                <button class="btn btn-block btn-a" (click)="publishProperty()">Publicar Propiedad</button>
+            </div>
+            <div class="col-12 payment-container" *ngIf="package === 'pro'">
+                <p style="color: rgb(2, 2, 2)">Introduce una tarjeta de débito/crédito
+                </p>
+                <form id="payment-form">
+                    <div id="card-element">
+                        <!-- a Stripe Element will be inserted here. -->
+                    </div>
+    
+    
+                    <div id="card-errors" role="alert">
+                        <!-- Used to display Element errors -->
+                    </div>
+                    <button id="submit" class="stripe-btn mt-5">
+                        <div class="spinner hidden" id="spinner"></div>
+                        <span id="button-text">Pagar & Publicar</span>
+                      </button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</section>

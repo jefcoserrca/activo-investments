@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { PropertyService } from 'src/app/services/property.service';
+import { ActivatedRoute } from '@angular/router';
+import { Property } from 'src/app/interfaces/property';
 
 @Component({
   selector: 'app-propierty-single',
@@ -10,7 +13,8 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export class PropiertySingleComponent implements OnInit {
   left = faArrowLeft;
   rigth = faArrowRight;
-
+  id: string;
+  loading = true;
    optionsCarousel: OwlOptions = {
     loop: true,
     margin: 0,
@@ -19,10 +23,23 @@ export class PropiertySingleComponent implements OnInit {
     navText: ['<', '>'],
     items: 1,
   };
+  property: Property;
 
-  constructor() { }
+  constructor(
+    private propertySrv: PropertyService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.loading = true;
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
+    await this.getProperty();
+    this.loading = false;
+  }
+
+  private async getProperty(): Promise<Property> {
+   return this.property =  await this.propertySrv.getProperty(this.id);
   }
 
 }
