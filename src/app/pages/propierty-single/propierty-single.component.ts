@@ -36,7 +36,7 @@ export class PropiertySingleComponent implements OnInit {
     this.loading = true;
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     await this.getProperty();
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.property.youtubeUrl);
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(('https://www.youtube.com/embed/' + this.property.youtubeUrl));
     this.loading = false;
   }
 
