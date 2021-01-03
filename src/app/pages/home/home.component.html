@@ -1,13 +1,12 @@
 <!--/ Carousel Star /-->
 <div class="intro intro-carousel">
     <owl-carousel-o id="carousel" class="owl-theme" [options]="customOptions" (translated)="traslateCarousel()" (change)="changeCarousel()">
-        <ng-template carouselSlide class="carousel-item-a intro-item">
+        <ng-template carouselSlide class="carousel-item-a intro-item" *ngFor="let property of bannerItems">
             <div class="bg-image" style="
-      height: 100vh;
-      background-image: url('../../../assets/img/home.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-    ">
+      height: 100vh !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+    " [ngStyle]="{'background-image': 'url('+property.images[0] + ')'}">
                 <div class="overlay overlay-a"></div>
                 <div class="intro-content display-table">
                     <div class="table-cell">
@@ -16,13 +15,14 @@
                                 <div class="col-lg-8">
                                     <div class="intro-body">
                                         <p class="intro-title-top">
-                                            Juriquilla, Querétaro <br /> 76226
+                                            {{ property.city }}, {{ property.state }} <br /> {{ property.zipCode }}
                                         </p>
                                         <h1 class="intro-title mb-4">
-                                            <span class="color-b">204 </span> Cascada de Agua <br /> Real de Juriquilla
+                                            <!--<span class="color-b">204 </span>--> 
+                                            {{property.address}} <br /> {{property.suburb}}
                                         </h1>
                                         <p class="intro-subtitle intro-price">
-                                            <a [routerLink]="['/propiedad']"><span class="price-a">renta | $ 12.000</span></a
+                                            <a [routerLink]="['/propiedad', property.id]"><span class="price-a">{{property.type}} | $ {{ property.price }}</span></a
                   >
                 </p>
               </div>
@@ -32,71 +32,6 @@
       </div>
     </div>
   </div>
-</ng-template>
-<ng-template carouselSlide class="carousel-item-a intro-item">
-    <div class="bg-image" style="
-  height: 100vh;
-  background-image: url('../../../assets/img/slide-1.jpg');
-  background-size: cover;
-    background-repeat: no-repeat;
-
-">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-            <div class="table-cell">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="intro-body">
-                                <p class="intro-title-top">
-                                    Zibatá, Querétaro <br /> 76226
-                                </p>
-                                <h1 class="intro-title mb-4">
-                                    <span class="color-b">204 </span> Calle de prueba<br /> Zibatá
-                                </h1>
-                                <p class="intro-subtitle intro-price">
-                                    <a [routerLink]="['/propiedad']"><span class="price-a">venta | $ 3 200 000</span></a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</ng-template>
-<ng-template carouselSlide class="carousel-item-a intro-item">
-<div class="bg-image" style="
-height: 100vh;
-background-image: url('../../../assets/img/slide-3.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-">
-  <div class="overlay overlay-a"></div>
-  <div class="intro-content display-table">
-      <div class="table-cell">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-8">
-                      <div class="intro-body">
-                          <p class="intro-title-top">
-                              El Márques, Querétaro <br /> 76226
-                          </p>
-                          <h1 class="intro-title mb-4">
-                              <span class="color-b">204 </span> Calle de prueba<br /> Arboledas
-                          </h1>
-                          <p class="intro-subtitle intro-price">
-                              <a [routerLink]="['/propiedad']"><span class="price-a">renta | $ 20,000</span></a
-        >
-      </p>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </ng-template>
 </owl-carousel-o>
 </div>
@@ -193,7 +128,7 @@ background-repeat: no-repeat;
                                 <div class="col-md-12">
                                     <div class="title-wrap d-flex justify-content-between">
                                         <div class="title-box">
-                                            <h2 class="title-a">Propiedades Cerca</h2>
+                                            <h2 class="title-a">Recomendaciones</h2>
                                         </div>
                                         <div class="title-link">
                                             <a [routerLink]="['/inmuebles']">Ver todas
@@ -204,20 +139,8 @@ background-repeat: no-repeat;
                                 </div>
                             </div>
                             <owl-carousel-o id="property-carousel" class="owl-theme" [options]="propiertyOptions">
-                                <ng-template carouselSlide>
-                                    <app-card-property></app-card-property>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-card-property></app-card-property>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-card-property></app-card-property>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-card-property></app-card-property>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-card-property></app-card-property>
+                                <ng-template carouselSlide *ngFor="let property of recommProperties">
+                                    <app-card-property [property]="property"></app-card-property>
                                 </ng-template>
                             </owl-carousel-o>
                         </div>

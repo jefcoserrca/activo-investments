@@ -22,7 +22,31 @@ export class PropertyService {
           images.push(url);
         }
         data.images = images;
+        data.id = id;
         await this.af.doc(`properties/${id}`).set(data);
+        resolve(id);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  updateProperty(data: Property, id: string): Promise<string> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const images: string[] = [];
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < data.images.length; i++) {
+          const img = data.images[i];
+          if (img.substring(0, 7) === 'http://' || img.substring(0, 8) === 'https://') {
+          images.push(img);
+          }else{
+          const url = await this.uploadPhoto(img, `properties/${id}/${i}`);
+          images.push(url);
+          }
+        }
+        data.images = images;
+        await this.af.doc(`properties/${id}`).update(data);
         resolve(id);
       } catch (e) {
         reject(e);
@@ -39,13 +63,35 @@ export class PropertyService {
           .pipe(first())
           .toPromise();
         if (res) {
-          console.log(res);
           resolve(res);
         }
       } catch (e) {
         reject(e);
       }
     });
+  }
+
+  getPropertiesByOwner(uid: string): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const ref = firebase.firestore().collection('properties');
+        const res = await ref.where('uid', '==', uid).get();
+        const properties = res.docs.map((property) => {
+          const data = property.data();
+          data.id = property.id;
+          return data;
+        });
+        if (properties) {
+          resolve(properties);
+        }
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  async getAllProperties(): Promise<any> {
+    return await this.af.collection('properties').valueChanges().pipe(first()).toPromise();
   }
 
   uploadPhoto(file: any, path: string): Promise<string> {

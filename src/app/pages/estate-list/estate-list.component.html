@@ -27,30 +27,24 @@
 
 <!-- ======= Property Grid ======= -->
 <section class="property-grid grid">
-    <div class="container">
+    <div class="container" *ngIf="!loading && filterProperties.length">
         <div class="row pb-4">
             <div class="col-sm-12">
                 <div class="grid-option">
-                    <form formGroup="">
-                        <select class="custom-select">
-                            <option selected>Todos</option>
-                            <option value="2">Venta</option>
-                            <option value="1">Renta</option>
-                            <option value="3">Renta Vacacional</option>
-                            <option value="3">Terrenos</option>
-                            <option value="3">Traspaso</option>
+                    
+                        <select class="custom-select" [(ngModel)]="type" (ngModelChange)="searchByType()">
+                            <option selected value="todos">Todos</option>
+                            <option value="venta">Venta</option>
+                            <option value="renta">Renta</option>
+                            <option value="renta-vacacional">Renta Vacacional</option>
+                            <option value="terrenos">Terrenos</option>
+                            <option value="traspaso">Traspaso</option>
                         </select>
-                    </form>
+                    
                 </div>
             </div>
-            <div class="col-md-4 pb-3">
-                <app-card-property></app-card-property>
-            </div>
-            <div class="col-md-4 pb-3">
-                <app-card-property></app-card-property>
-            </div>
-            <div class="col-md-4 pb-3">
-                <app-card-property></app-card-property>
+            <div class="col-md-4 pb-3" *ngFor="let item of filterProperties">
+                <app-card-property [property]="item"></app-card-property>
             </div>
 
         </div>
@@ -81,5 +75,8 @@
                 </nav>
             </div>
         </div>
+    </div>
+    <div class="container" *ngIf="loading">
+        <app-loading></app-loading>
     </div>
 </section>

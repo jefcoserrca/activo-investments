@@ -111,7 +111,7 @@ export class StepPaymentComponent implements OnInit {
     const res = await this.propertySrv.createProperty(this.property);
     if (res) {
       console.log(res);
-      this.router.navigate([`/propiedad`]);
+      this.router.navigate([`/propiedad`, res]);
     }
     this.loading = false;
   }

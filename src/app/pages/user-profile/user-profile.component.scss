@@ -96,3 +96,19 @@
         }
     }
 }
+
+.btn.btn-a {
+    border-radius: 0;
+    padding: 0.25rem 3rem;
+    letter-spacing: .05rem;
+}
+
+.btn.btn-a {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn.btn-a:hover {
+    background-color: #2eca6a;
+    color: #000000;
+}

@@ -1,6 +1,9 @@
-import { Coords } from 'ngx-owl-carousel-o/lib/services/carousel.service';
+import { Coords } from './coords';
 
 export interface Property {
+    id?: string;
+    address: string;
+    amenities: Array <any>;
     area: number;
     rooms: number;
     baths: number;

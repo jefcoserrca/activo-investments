@@ -48,7 +48,7 @@
                 <input style="width: 100%;" [(ngModel)]="address" class="input-search" #search
                     (keydown.enter)="$event.preventDefault()" type="text" placeholder="Introduce tu dirección...">
                 <br>
-                <agm-map [latitude]="coords.latitude" [longitude]="coords.longitude" [zoom]="zoom">
+                <agm-map [latitude]="coords.latitude" [longitude]="coords.longitude" [zoom]="18">
                     <agm-marker [latitude]="coords.latitude" [longitude]="coords.longitude" [markerDraggable]="true"
                         (dragEnd)="markerDragEnd($event)"></agm-marker>
                 </agm-map>
@@ -101,11 +101,11 @@
                                 <label for="rooms"> Tipo de Inmueble </label>
                                 <select class="custom-select form-control" formControlName="typeProperty"
                                     placeholder="Selecciona una">
-                                    <option value="venta">Casa</option>
-                                    <option value="renta">Departamento</option>
-                                    <option value="renta-vacaional">Local</option>
-                                    <option value="terrenos">Oficina</option>
-                                    <option value="traspaso">Otro</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="departamento">Departamento</option>
+                                    <option value="local">Local</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="otro">Otro</option>
                                 </select>
                                 <span class="error-message"
                                     *ngIf="form.controls['typeProperty'].touched && form.controls['typeProperty'].errors?.required">
@@ -236,10 +236,10 @@
                             </span>
                         </div>
                     </div>
-                    <div class="row justify-content-center py-4">
+                    <div class="row justify-content-center py-4" *ngIf="!unmatch">
 
                         <button class="btn btn-a" [disabled]="!form.valid"
-                            (click)="saveProperty()"> Publicar propiedad </button>
+                            (click)="saveProperty()"> {{ !switch ? 'Publicar propiedad': 'Guardar cambios'}} </button>
                     </div>
                 </form>
             </div>

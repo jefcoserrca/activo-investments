@@ -1,0 +1,4 @@
+{
+    "tslint.suppressWhileTypeErrorsPresent": true,
+    "tslint.exclude": null
+}

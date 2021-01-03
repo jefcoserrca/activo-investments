@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions} from 'ngx-owl-carousel-o';
 import { faHome, faHandHoldingUsd, faHandshake, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { ConfigService } from '../../services/config.service';
+import { Property } from '../../interfaces/property';
 declare var $: any;
 
 @Component({
@@ -13,6 +15,8 @@ export class HomeComponent implements OnInit {
   faMoney = faHandHoldingUsd;
   faHands = faHandshake;
   faArrow = faArrowRight;
+  bannerItems: any [];
+  recommProperties: Array <Property>;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -81,10 +85,15 @@ export class HomeComponent implements OnInit {
       }
   };
 
-  constructor() { }
+  constructor(
+    private configSrv: ConfigService
+  ) { }
 
-  ngOnInit(): void {
-
+  async ngOnInit(): Promise<any> {
+    const res = await this.configSrv.getConfig();
+    this.bannerItems = res.banner;
+    this.recommProperties = res.recommendations;
+    console.log(this.recommProperties);
   }
 
   traslateCarousel(): void {
@@ -98,6 +107,7 @@ export class HomeComponent implements OnInit {
     $('.intro-content .intro-price').removeClass('fadeInUp animated').hide();
     $('.intro-content .intro-title-top, .intro-content .spacial').removeClass('fadeIn animated').hide();
   }
+
 
 }
 

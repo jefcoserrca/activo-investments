@@ -1,37 +1,33 @@
-<ul class="list-unstyled pt-4" *ngIf="false">
-    <li class="media my-4">
-        <img src="https://www.interjet.com/images/img.jpg" width="128" class="mr-3" alt="...">
-        <div class="media-body">
-            <a href="">
-                <h5 class="mt-0 mb-1">Cascada de Montebello #119</h5>
-            </a>
-            <p class="text-grey">Real de Juriquilla</p>
-            <p class="text-grey">Queretaro, Queretaro</p>
-            <p class="price">$12, 000</p>
-        </div>
-        <button class="btn btn-primary m-1"> 
-        <fa-icon [icon]="faEdit"></fa-icon>     
-        </button>
-        <button class="btn btn-danger m-1"> <fa-icon [icon]="faTrash"></fa-icon> </button>
-    </li>
-    <li class="media my-4">
-        <img src="https://www.interjet.com/images/img.jpg" width="128" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">List-based media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-    </li>
-    <li class="media">
-        <img src="https://www.interjet.com/images/img.jpg" width="128" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">List-based media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-    </li>
+<ul class="list-unstyled pt-4" *ngIf="!loading && properties.length > 0">
+  <li class="media my-4" *ngFor="let item of properties">
+    <img [src]="item.images[0]" width="128" class="mr-3" alt="..." />
+    <div class="media-body">
+      <a [routerLink]="['/propiedad', item.id]">
+        <h5 class="mt-0 mb-1">{{ item.address }}</h5>
+      </a>
+      <p class="text-grey">{{ item.suburb }}</p>
+      <p class="text-grey">{{ item.city }}, {{ item.state }}</p>
+      <p class="price">${{ item.price }} MXN</p>
+    </div>
+    <button
+      [routerLink]="['/editar-propiedad', item.id]"
+      class="btn btn-primary m-1"
+    >
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </button>
+    <button class="btn btn-danger m-1">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </li>
 </ul>
 
-<div class="message">
-    <fa-icon [icon]="faExclamation"></fa-icon><br>
-    <h4>No tienes propiedades publicadas!</h4> <br>
-    <button class="btn btn-a" [routerLink]="['/crear-propiedad']">Subir Propiedad</button>
+<div class="message" *ngIf="!loading && properties.length === 0">
+  <fa-icon [icon]="faExclamation"></fa-icon><br />
+  <h4>No tienes propiedades publicadas!</h4>
+  <br />
+  <button class="btn btn-a" [routerLink]="['/crear-propiedad']">
+    Subir Propiedad
+  </button>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>

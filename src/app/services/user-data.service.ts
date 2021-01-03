@@ -10,7 +10,7 @@ export class UserDataService {
     private af: AngularFirestore
   ) { }
   async getUser(uid: string): Promise <any> {
-    return new Promise (async(resolve, reject) => {
+    return new Promise (async (resolve, reject) => {
       try {
         const user = await this.af.doc(`users/${ uid }`).valueChanges().pipe(first()).toPromise();
         resolve (user);
