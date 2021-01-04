@@ -23,4 +23,16 @@ export class EmailSenderService {
       }
     });
   }
+
+  sendPropertyToContact(form: any): Promise<any> {
+    const id = this.af.createId();
+    return new Promise (async (resolve, reject) => {
+      try {
+       await this.af.doc(`contactProperty/${id}`).set(form);
+       resolve(true);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
 }

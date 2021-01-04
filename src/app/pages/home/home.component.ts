@@ -3,6 +3,7 @@ import { OwlOptions} from 'ngx-owl-carousel-o';
 import { faHome, faHandHoldingUsd, faHandshake, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { ConfigService } from '../../services/config.service';
 import { Property } from '../../interfaces/property';
+import { PropertyService } from 'src/app/services/property.service';
 declare var $: any;
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   faArrow = faArrowRight;
   bannerItems: any [];
   recommProperties: Array <Property>;
-
+  lastProperties: Array <Property>;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -86,7 +87,8 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(
-    private configSrv: ConfigService
+    private configSrv: ConfigService,
+    private propertiesSrv: PropertyService
   ) { }
 
   async ngOnInit(): Promise<any> {
@@ -94,6 +96,8 @@ export class HomeComponent implements OnInit {
     this.bannerItems = res.banner;
     this.recommProperties = res.recommendations;
     console.log(this.recommProperties);
+    this.lastProperties = await this.propertiesSrv.getPropertiesByDate();
+    console.log(this.lastProperties);
   }
 
   traslateCarousel(): void {

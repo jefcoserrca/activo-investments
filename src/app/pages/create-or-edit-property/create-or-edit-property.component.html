@@ -60,6 +60,20 @@
                 <h3 class="title pb-3">Paso 3 <small>Detalla información de la propiedad</small></h3>
                 <form [formGroup]="form" class="form-as">
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="title">Titulo de Publicación </label>
+                                <input type="text" placeholder="Ej: Casa Nueva en Queretaro" class="form-control"
+                                    formControlName="title"
+                                    [ngClass]="{'form-error': form.controls['title'].touched && (form.controls['title'].errors?.required )}">
+                                    <span class="error-message"
+                                    *ngIf="form.controls['title'].touched && form.controls['title'].errors?.required">
+                                    Título es requerido
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="area"> Área en m² * </label>

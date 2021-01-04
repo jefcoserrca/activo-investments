@@ -262,7 +262,7 @@
 }
 
 .php-email-form .sent-message {
-    display: none;
+    display: block !important;
     color: #fff;
     background: #18d26e;
     text-align: center;
@@ -501,4 +501,20 @@ agm-map {
     fa-icon {
         font-size: 4rem;
     }
+}
+
+
+.error-message {
+    color: #ed3c0d;
+    padding: 0.5rem;
+    font-weight: 600;
+}
+
+.sent-message {
+    display: block !important;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
 }

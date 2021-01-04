@@ -1,21 +1,21 @@
 <div class="carousel-item-c">
     <div class="card-box-b card-shadow news-box">
         <div class="img-box-b">
-            <img src="../../../assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+            <img [src]="property.images[0]" alt="" class="img-b img-fluid">
         </div>
         <div class="card-overlay">
             <div class="card-header-b">
                 <div class="card-category-b">
-                    <a href="#" class="category-b">Departamento</a>
+                    <a class="category-b">{{ property.typeProperty }}</a>
                 </div>
                 <div class="card-title-b">
                     <h2 class="title-2">
-                        <a [routerLink]="['/propiedad']">Amueblado para
-                            <br> vacacionar</a>
+                        <a [routerLink]="['/propiedad']">{{ property.title }}
+                            <br> {{ property.city }}</a>
                     </h2>
                 </div>
                 <div class="card-date">
-                    <span class="date-b">$189 MXN/día</span>
+                    <span class="date-b">${{ property.price }}</span>
                 </div>
             </div>
         </div>

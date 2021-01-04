@@ -23,6 +23,7 @@ export class PropertyService {
         }
         data.images = images;
         data.id = id;
+        data.createdAt = new Date();
         await this.af.doc(`properties/${id}`).set(data);
         resolve(id);
       } catch (e) {
@@ -93,6 +94,30 @@ export class PropertyService {
   async getAllProperties(): Promise<any> {
     return await this.af.collection('properties').valueChanges().pipe(first()).toPromise();
   }
+
+  getPropertiesByDate(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const ref = firebase.firestore().collection('properties');
+        const res = await ref.orderBy('createdAt', 'desc').limit(8).get();
+        const properties = res.docs.map((property) => {
+          const data = property.data();
+          data.id = property.id;
+          return data;
+        });
+        if (properties) {
+          resolve(properties);
+        }
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  async deleteProperty(id: string): Promise<any> {
+    return await this.af.doc(`properties/${ id }`).delete();
+  }
+
 
   uploadPhoto(file: any, path: string): Promise<string> {
     const storeRef = firebase.storage().ref();

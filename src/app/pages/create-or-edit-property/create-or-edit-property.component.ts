@@ -80,6 +80,7 @@ export class CreateOrEditPropertyComponent implements OnInit {
 
   initForm(): void {
     this.form = this.formBuilder.group({
+      title: new FormControl('', Validators.required),
       area: new FormControl('', Validators.required),
       rooms: new FormControl('', Validators.required),
       baths: new FormControl(''),
@@ -127,6 +128,7 @@ export class CreateOrEditPropertyComponent implements OnInit {
   async initProperty(): Promise<any> {
     const property: Property = await this.propertySrv.getProperty(this.id);
     if (this.uid === property.uid) {
+    this.form.controls.title.setValue(property.title);
     this.form.controls.area.setValue(property.area);
     this.form.controls.rooms.setValue(property.rooms);
     this.form.controls.baths.setValue(property.baths);

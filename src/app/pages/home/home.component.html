@@ -1,234 +1,304 @@
 <!--/ Carousel Star /-->
 <div class="intro intro-carousel">
-    <owl-carousel-o id="carousel" class="owl-theme" [options]="customOptions" (translated)="traslateCarousel()" (change)="changeCarousel()">
-        <ng-template carouselSlide class="carousel-item-a intro-item" *ngFor="let property of bannerItems">
-            <div class="bg-image" style="
-      height: 100vh !important;
-      background-size: cover !important;
-      background-repeat: no-repeat !important;
-    " [ngStyle]="{'background-image': 'url('+property.images[0] + ')'}">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">
-                                            {{ property.city }}, {{ property.state }} <br /> {{ property.zipCode }}
-                                        </p>
-                                        <h1 class="intro-title mb-4">
-                                            <!--<span class="color-b">204 </span>--> 
-                                            {{property.address}} <br /> {{property.suburb}}
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a [routerLink]="['/propiedad', property.id]"><span class="price-a">{{property.type}} | $ {{ property.price }}</span></a
-                  >
-                </p>
+  <owl-carousel-o
+    id="carousel"
+    class="owl-theme"
+    [options]="customOptions"
+    (translated)="traslateCarousel()"
+    (change)="changeCarousel()"
+  >
+    <ng-template
+      carouselSlide
+      class="carousel-item-a intro-item"
+      *ngFor="let property of bannerItems"
+    >
+      <div
+        class="bg-image"
+        style="
+          height: 100vh !important;
+          background-size: cover !important;
+          background-repeat: no-repeat !important;
+        "
+        [ngStyle]="{ 'background-image': 'url(' + property.images[0] + ')' }"
+      >
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">
+                    <p class="intro-title-top">
+                      {{ property.city }}, {{ property.state }} <br />
+                      {{ property.zipCode }}
+                    </p>
+                    <h1 class="intro-title mb-4">
+                      <!--<span class="color-b">204 </span>-->
+                      {{ property.address }} <br />
+                      {{ property.suburb }}
+                    </h1>
+                    <p class="intro-subtitle intro-price">
+                      <a [routerLink]="['/propiedad', property.id]"
+                        ><span class="price-a"
+                          >{{ property.type }} | $ {{ property.price }}</span
+                        ></a
+                      >
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</ng-template>
-</owl-carousel-o>
+    </ng-template>
+  </owl-carousel-o>
 </div>
 
 <div class="pt-5 mt-5 text-center">
-    <img src="../../../assets/img/logo.png" style="width: 250px; height: auto" alt="" />
+  <img
+    src="../../../assets/img/logo.png"
+    style="width: 250px; height: auto"
+    alt=""
+  />
 </div>
 
 <!--/ Services Star /-->
 <section class="section-services section-t8">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title-wrap d-flex justify-content-between">
-                    <div class="title-box">
-                        <h2 class="title-a">Nuestros Servicios</h2>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Nuestros Servicios</h2>
+          </div>
         </div>
-        <div class="row pt-2">
-            <div class="col-md-4">
-                <div class="card-box-c foo">
-                    <div class="card-header-c d-flex">
-                        <div class="card-box-ico">
-                            <fa-icon [icon]="faHome" aria-hidden="true"></fa-icon>
-                        </div>
-                        <div class="card-title-c align-self-center">
-                            <h2 class="title-c">Venta</h2>
-                        </div>
-                    </div>
-                    <div class="card-body-c">
-                        <p class="content-c">
-                            Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
-                        </p>
-                    </div>
-                    <div class="card-footer-c">
-                        <a href="#" class="link-c link-icon">Vender ahora
+      </div>
+    </div>
+    <br>
+    <div class="row pt-4">
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <fa-icon [icon]="faHome" aria-hidden="true"></fa-icon>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">Venta</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+                Publica tus propiedades para conectar con miles de personas. 
+                Si tienes la necesidad de publicar una propiedad para vender, rentar o ceder, Activo Investments es tu mejor oportunidad. Registrate y publica ahora! 
+            </p>
+          </div>
+          <div class="card-footer-c">
+            <a [routerLink]="['/crear-propiedad']" class="link-c link-icon"
+              >Publicar ahora
               <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
             </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-box-c foo">
-                                    <div class="card-header-c d-flex">
-                                        <div class="card-box-ico">
-                                            <fa-icon [icon]="faMoney" aria-hidden="true"></fa-icon>
-                                        </div>
-                                        <div class="card-title-c align-self-center">
-                                            <h2 class="title-c">Compra</h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-body-c">
-                                        <p class="content-c">
-                                            Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer-c">
-                                        <a href="#" class="link-c link-icon">Ver inmuebles
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <fa-icon [icon]="faMoney" aria-hidden="true"></fa-icon>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">Compra</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+                Encuentra las mejores propiedades para ti, invierte inteligentemente con Activo Investements!
+            </p>
+          </div>
+          <div class="card-footer-c">
+            <a [routerLink]="['/propiedades']" class="link-c link-icon"
+              >Ver inmuebles
               <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
             </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-box-c foo">
-                                    <div class="card-header-c d-flex">
-                                        <div class="card-box-ico">
-                                            <fa-icon [icon]="faHands" aria-hidden="true"></fa-icon>
-                                        </div>
-                                        <div class="card-title-c align-self-center">
-                                            <h2 class="title-c">Renta</h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-body-c">
-                                        <p class="content-c">
-                                            Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer-c">
-                                        <a href="#" class="link-c link-icon">Ver inmuebles
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <fa-icon [icon]="faHands" aria-hidden="true"></fa-icon>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">Renta</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+                ¿Tienes alguna propiedad para rentar? Encuentra arrendatario en Activo Investments, publica ahora tu propiedad para conectar con miles de personas
+            </p>
+          </div>
+          <div class="card-footer-c">
+            <a [routerLink]="['/propiedades']"  class="link-c link-icon"
+              >Ver inmuebles
               <fa-icon [icon]="faArrow" aria-hidden="true"></fa-icon>
             </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </section>
-                    <section class="section-property section-t8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="title-wrap d-flex justify-content-between">
-                                        <div class="title-box">
-                                            <h2 class="title-a">Recomendaciones</h2>
-                                        </div>
-                                        <div class="title-link">
-                                            <a [routerLink]="['/inmuebles']">Ver todas
-                                    <span class="ion-ios-arrow-forward"></span>
-                                  </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <owl-carousel-o id="property-carousel" class="owl-theme" [options]="propiertyOptions">
-                                <ng-template carouselSlide *ngFor="let property of recommProperties">
-                                    <app-card-property [property]="property"></app-card-property>
-                                </ng-template>
-                            </owl-carousel-o>
-                        </div>
-                    </section>
-                    <section class="section-news section-t8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="title-wrap d-flex justify-content-between">
-                                        <div class="title-box">
-                                            <h2 class="title-a">Novedades</h2>
-                                        </div>
-                                        <div class="title-link">
-                                            <a [routerLink]="['/inmuebles']">ver todas
-                                  <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <owl-carousel-o id="new-carousel" class="owl-theme" [options]="newsOptions">
-                                <ng-template carouselSlide>
-                                    <app-square-card></app-square-card>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-square-card></app-square-card>
-                                </ng-template>
-                                <ng-template carouselSlide>
-                                    <app-square-card></app-square-card>
-                                </ng-template>
-                            </owl-carousel-o>
-                        </div>
-                    </section>
-                    <br>
-                    <div class="pt-4 mt-4 container">
-                        <h2 class="title-a">Suscribete a nuestro Newsletter!</h2>
-                        <p>Recibe notificaciones y novedades en tu correo electrónico</p>
-                        <!-- Begin Mailchimp Signup Form -->
-                        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                        <style type="text/css">
-                            #mc_embed_signup {
-                                background: #fff;
-                                clear: left;
-                                font: 14px Helvetica, Arial, sans-serif;
-                            }
-                            /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-property section-t8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Recomendaciones</h2>
+          </div>
+          <div class="title-link">
+            <a [routerLink]="['/inmuebles']"
+              >Ver todas
+              <span class="ion-ios-arrow-forward"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <owl-carousel-o
+      id="property-carousel"
+      class="owl-theme"
+      [options]="propiertyOptions"
+    >
+      <ng-template carouselSlide *ngFor="let property of recommProperties">
+        <app-card-property [property]="property"></app-card-property>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+<section class="section-news section-t8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Novedades</h2>
+          </div>
+          <div class="title-link">
+            <a [routerLink]="['/inmuebles']"
+              >ver todas
+              <span class="ion-ios-arrow-forward"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <owl-carousel-o id="new-carousel" class="owl-theme" [options]="newsOptions">
+      <ng-template carouselSlide *ngFor="let item of lastProperties">
+        <app-square-card [property]="item"></app-square-card>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+<br />
+<div class="pt-4 mt-4 container">
+  <h2 class="title-a">Suscribete a nuestro Newsletter!</h2>
+  <p>Recibe notificaciones y novedades en tu correo electrónico</p>
+  <!-- Begin Mailchimp Signup Form -->
+  <link
+    href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <style type="text/css">
+    #mc_embed_signup {
+      background: #fff;
+      clear: left;
+      font: 14px Helvetica, Arial, sans-serif;
+    }
+    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
 	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                        </style>
-                        <div id="mc_embed_signup">
-                            <form action="https://activoi.us7.list-manage.com/subscribe/post?u=c54e70bdc96375acab1c56842&amp;id=7a3a04cdae" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-as validate" target="_blank" novalidate>
-                                <div id="mc_embed_signup_scroll">
-
-                                    <div class="mc-field-group">
-                                        <label for="mce-EMAIL">Correo </label>
-                                        <input type="email" value="" name="EMAIL" class="form-control required email" id="mce-EMAIL">
-                                    </div>
-                                    <div id="mce-responses" class="clear">
-                                        <div class="response" id="mce-error-response" style="display:none"></div>
-                                        <div class="response" id="mce-success-response" style="display:none"></div>
-                                    </div>
-                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c54e70bdc96375acab1c56842_7a3a04cdae" tabindex="-1" value=""></div>
-                                    <div class="clear"><input type="submit" value="Subscribirme" name="subscribe" id="mc-embedded-subscribe" class="btn btn-a button"></div>
-                                </div>
-                            </form>
-                        </div>
-                        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-                        <script type='text/javascript'>
-                            (function($) {
-                                window.fnames = new Array();
-                                window.ftypes = new Array();
-                                fnames[0] = 'EMAIL';
-                                ftypes[0] = 'email';
-                                fnames[1] = 'FNAME';
-                                ftypes[1] = 'text';
-                                fnames[2] = 'LNAME';
-                                ftypes[2] = 'text';
-                                fnames[3] = 'ADDRESS';
-                                ftypes[3] = 'address';
-                                fnames[4] = 'PHONE';
-                                ftypes[4] = 'phone';
-                                fnames[5] = 'BIRTHDAY';
-                                ftypes[5] = 'birthday';
-                            }(jQuery));
-                            var $mcj = jQuery.noConflict(true);
-                        </script>
-                        <!--End mc_embed_signup-->
-
-                    </div>
-                    <br>
-                    <br>
+  </style>
+  <div id="mc_embed_signup">
+    <form
+      action="https://activoi.us7.list-manage.com/subscribe/post?u=c54e70bdc96375acab1c56842&amp;id=7a3a04cdae"
+      method="post"
+      id="mc-embedded-subscribe-form"
+      name="mc-embedded-subscribe-form"
+      class="form-as validate"
+      target="_blank"
+      novalidate
+    >
+      <div id="mc_embed_signup_scroll">
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">Correo </label>
+          <input
+            type="email"
+            value=""
+            name="EMAIL"
+            class="form-control required email"
+            id="mce-EMAIL"
+          />
+        </div>
+        <div id="mce-responses" class="clear">
+          <div
+            class="response"
+            id="mce-error-response"
+            style="display: none"
+          ></div>
+          <div
+            class="response"
+            id="mce-success-response"
+            style="display: none"
+          ></div>
+        </div>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input
+            type="text"
+            name="b_c54e70bdc96375acab1c56842_7a3a04cdae"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div class="clear">
+          <input
+            type="submit"
+            value="Subscribirme"
+            name="subscribe"
+            id="mc-embedded-subscribe"
+            class="btn btn-a button"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <script
+    type="text/javascript"
+    src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+  ></script>
+  <script type="text/javascript">
+    (function ($) {
+      window.fnames = new Array();
+      window.ftypes = new Array();
+      fnames[0] = "EMAIL";
+      ftypes[0] = "email";
+      fnames[1] = "FNAME";
+      ftypes[1] = "text";
+      fnames[2] = "LNAME";
+      ftypes[2] = "text";
+      fnames[3] = "ADDRESS";
+      ftypes[3] = "address";
+      fnames[4] = "PHONE";
+      ftypes[4] = "phone";
+      fnames[5] = "BIRTHDAY";
+      ftypes[5] = "birthday";
+    })(jQuery);
+    var $mcj = jQuery.noConflict(true);
+  </script>
+  <!--End mc_embed_signup-->
+</div>
+<br />
+<br />

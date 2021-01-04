@@ -2,11 +2,13 @@ import { Coords } from './coords';
 
 export interface Property {
     id?: string;
+    title: string;
     address: string;
     amenities: Array <any>;
     area: number;
     rooms: number;
     baths: number;
+    createdAt?: Date;
     description: string;
     youtubeUrl: string;
     price: number;

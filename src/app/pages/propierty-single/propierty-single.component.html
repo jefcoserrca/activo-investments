@@ -216,25 +216,46 @@
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="property-contact">
-                            <form class="form-as">
+                            <form class="form-as" [formGroup]="form" (ngSubmit)="send()">
                                 <div class="row">
                                     <div class="col-md-12 mb-1">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Nombre *" required>
+                                            <input type="text" class="form-control form-control-lg form-control-a" formControlName="name" placeholder="Nombre *" required>
+                                            <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
+                                                Nombre es requerido
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-1">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                                            <input type="email" class="form-control form-control-lg form-control-a" formControlName="email" placeholder="Email *" required>
+                                            <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.required">
+                                                Correo es requerido
+                                            </span>
+                                            <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.pattern">
+                                                Formato no válido
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-1">
                                         <div class="form-group">
-                                            <textarea id="textMessage" class="form-control" placeholder="Mensaje *" name="message" cols="45" rows="8" required></textarea>
+                                            <textarea formControlName="message" class="form-control" placeholder="Mensaje *" name="message" cols="45" rows="8" required></textarea>
+                                            <span class="error-message" *ngIf="form.controls['message'].touched && form.controls['message'].errors?.required">
+                                                Mensaje es requerido
+                                            </span> 
                                         </div>
                                     </div>
+                                    <div class="col-md-12 mb-3" *ngIf="showMessage">
+                                        <div class="mb-3">
+                                            <div class="sent-message">Mensaje enviado</div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="showLoading" class="modal-body d-flex justify-content-center">
+                                        <app-loading></app-loading>
+                                    </div>
+
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-a">Enviar Mensaje</button>
+                                        <button type="submit" [disabled]="!form.valid && !showLoading" class="btn btn-a">Enviar Mensaje</button>
                                     </div>
                                 </div>
                             </form>

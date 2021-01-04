@@ -11,7 +11,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#">Subir mi propiedad</a>
+                            <a>Subir mi propiedad</a>
                         </li>
                     </ol>
                 </nav>
@@ -27,7 +27,7 @@
 
 <!-- ======= Property Grid ======= -->
 <section class="property-grid grid">
-    <div class="container" *ngIf="!loading && filterProperties.length">
+    <div class="container" *ngIf="!loading">
         <div class="row pb-4">
             <div class="col-sm-12">
                 <div class="grid-option">
@@ -42,13 +42,17 @@
                         </select>
                     
                 </div>
-            </div>
+            </div>        
+                
             <div class="col-md-4 pb-3" *ngFor="let item of filterProperties">
                 <app-card-property [property]="item"></app-card-property>
             </div>
-
         </div>
-        <div class="row my-4">
+        <div *ngIf="!filterProperties.length" class="message">
+            <fa-icon [icon]="faExclamation"></fa-icon><br>
+            <h4>No se encontraron Propiedades</h4> <br>
+        </div>
+        <!--<div class="row my-4">
             <div class="col-sm-12">
                 <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
@@ -74,7 +78,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="container" *ngIf="loading">
         <app-loading></app-loading>
