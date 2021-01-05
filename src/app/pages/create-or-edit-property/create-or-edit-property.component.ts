@@ -156,7 +156,9 @@ export class CreateOrEditPropertyComponent implements OnInit {
     const img = await this.imageCompress.uploadFile();
     const result = await this.imageCompress.compressFile(
       img.image,
-      img.orientation
+      img.orientation,
+      100,
+      100
     );
     this.images.push(result);
   }

@@ -18,7 +18,7 @@
         <div class="card-body-a">
           <div class="price-box d-flex">
             <span class="price-a"
-              >{{ property.type }} | $ {{ property.price }}</span
+              >{{ property.type }} |  {{ property.price | currency:'MXN':'symbol-narrow' }}</span
             >
           </div>
           <a [routerLink]="['/propiedad', property.id]" class="link-a"

@@ -18,7 +18,7 @@ export class PropertyService {
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < data.images.length; i++) {
           const img = data.images[i];
-          const url = await this.uploadPhoto(img, `properties/${id}/${i}`);
+          const url = await this.uploadPhoto(img, `properties/${id}/${new Date().valueOf().toString()}`);
           images.push(url);
         }
         data.images = images;

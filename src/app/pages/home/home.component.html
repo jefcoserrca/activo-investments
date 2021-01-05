@@ -40,7 +40,7 @@
                     <p class="intro-subtitle intro-price">
                       <a [routerLink]="['/propiedad', property.id]"
                         ><span class="price-a"
-                          >{{ property.type }} | $ {{ property.price }}</span
+                          >{{ property.type }} |  {{ property.price | currency:'MXN':'symbol-narrow' }}</span
                         ></a
                       >
                     </p>
@@ -79,13 +79,13 @@
     <div class="row pt-4">
       <div class="col-md-4">
         <div class="card-box-c foo">
-          <div class="card-header-c d-flex">
+          <div class="card-header-c d-flex justify-content-center">
             <div class="card-box-ico">
               <fa-icon [icon]="faHome" aria-hidden="true"></fa-icon>
             </div>
-            <div class="card-title-c align-self-center">
-              <h2 class="title-c">Venta</h2>
-            </div>
+          </div>
+          <div class="text-center">
+            <h2>Venta</h2>
           </div>
           <div class="card-body-c">
             <p class="content-c">
@@ -103,13 +103,13 @@
       </div>
       <div class="col-md-4">
         <div class="card-box-c foo">
-          <div class="card-header-c d-flex">
+          <div class="card-header-c d-flex justify-content-center">
             <div class="card-box-ico">
               <fa-icon [icon]="faMoney" aria-hidden="true"></fa-icon>
             </div>
-            <div class="card-title-c align-self-center">
-              <h2 class="title-c">Compra</h2>
-            </div>
+          </div>
+          <div class="text-center">
+            <h2>Compra</h2>
           </div>
           <div class="card-body-c">
             <p class="content-c">
@@ -126,13 +126,13 @@
       </div>
       <div class="col-md-4">
         <div class="card-box-c foo">
-          <div class="card-header-c d-flex">
+          <div class="card-header-c d-flex justify-content-center">
             <div class="card-box-ico">
               <fa-icon [icon]="faHands" aria-hidden="true"></fa-icon>
             </div>
-            <div class="card-title-c align-self-center">
-              <h2 class="title-c">Renta</h2>
-            </div>
+          </div>
+          <div class="text-center">
+            <h2>Renta</h2>
           </div>
           <div class="card-body-c">
             <p class="content-c">

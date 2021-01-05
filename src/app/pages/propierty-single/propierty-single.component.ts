@@ -7,6 +7,7 @@ import { Property } from 'src/app/interfaces/property';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSenderService } from '../../services/email-sender.service';
+import { faFacebook, faWhatsapp, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-propierty-single',
   templateUrl: './propierty-single.component.html',
@@ -14,6 +15,9 @@ import { EmailSenderService } from '../../services/email-sender.service';
 })
 export class PropiertySingleComponent implements OnInit {
   faExclamation = faExclamationCircle;
+  faFb = faFacebook;
+  faWhats = faWhatsapp;
+  faTwitter = faTwitter;
   left = faArrowLeft;
   rigth = faArrowRight;
   id: string;
@@ -35,7 +39,7 @@ export class PropiertySingleComponent implements OnInit {
     private propertySrv: PropertyService,
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private sender: EmailSenderService
   ) { }
 
@@ -71,7 +75,7 @@ export class PropiertySingleComponent implements OnInit {
       id: this.property.id,
       address: this.property.address,
       city: this.property.city
-    }
+    };
     const response = await this.sender.sendPropertyToContact(data).catch(() => {
       this.showLoading = false;
     });

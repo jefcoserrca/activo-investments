@@ -23,7 +23,6 @@ export class ToolbarComponent implements OnInit {
 
   searcherInit(): void {
     $('.navbar-toggle-box-collapse').on('click', () => {
-      console.log('Test');
       $('body').removeClass('box-collapse-closed').addClass('box-collapse-open');
     });
     $('.close-box-collapse, .click-closed').on('click', () => {

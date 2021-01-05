@@ -394,7 +394,6 @@ card-box-c {
 .title-c {
     font-size: 2.5rem;
     font-weight: 600;
-    margin-left: -40px;
 }
 
 @media (min-width: 768px) {
@@ -517,4 +516,33 @@ agm-map {
     text-align: center;
     padding: 15px;
     font-weight: 600;
+}
+
+.whats{
+    background: #00bb2d;
+    border-radius: 50%;
+    color: white;
+    &:hover {
+        filter: brightness(0.5);
+    }
+}
+
+.fb {
+    
+        background: #3b5998;
+        color: white;
+        border-radius: 50%;
+        &:hover {
+            filter: brightness(0.5);
+        }
+}
+
+.twitter{
+    background: #00acee;
+    color: white;
+    border-radius: 50%;
+
+    &:hover {
+        filter: brightness(0.5);
+    }
 }

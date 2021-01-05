@@ -6,6 +6,7 @@ import { from, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { rejects } from 'assert';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+declare var $;
 @Injectable({
   providedIn: 'root'
 })
@@ -117,11 +118,12 @@ export class AuthService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
 
     return new Promise( (resolve, reject) => {
-      this.afAuth.onAuthStateChanged( (res) => {
+      this.afAuth.onAuthStateChanged( async (res) => {
         if (res){
           resolve(true);
         }else{
-          this.router.navigateByUrl('');
+          await this.router.navigateByUrl('');
+          $('#signupModal').modal('show');
           resolve (false);
         }
       });

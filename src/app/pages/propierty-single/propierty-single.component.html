@@ -3,8 +3,8 @@
         <div class="row" *ngIf="!loading && property">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">{{ property.address }}</h1>
-                    <span class="color-text-a">{{ property.suburb }}, {{ property.city }} {{ property.zipCode }}</span>
+                    <h1 class="title-single">{{ property.title }}</h1>
+                    <span class="color-text-a">{{ property.address }}</span>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -44,11 +44,12 @@
                     <div class="col-md-5 col-lg-4">
                         <div class="property-price d-flex justify-content-center foo">
                             <div class="card-header-c d-flex">
-                                <div class="card-box-ico">
+                               <!-- <div class="card-box-ico">
                                     <span class="ion-money">$</span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h5 class="title-c">{{ property.price }}</h5>
+                                </div> -->
+                                <div class="card-title-c align-self-center card-box-ico">
+                                    <h5 class="title-c">{{ property.price | currency:'MXN':'symbol-narrow' }}</h5>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -94,6 +95,13 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                        <br>
+                        <h5 class="pt-4">Compartir</h5>
+                        <div class="d-flex">
+                            <a [href]="'https://www.facebook.com/sharer/sharer.php?u=https://activoi.com/propiedad/'+property.id+'&quote='+property.title+' '+'en: '+property.address+' propiedad en: '+property.type+' visítala en: '+'https://activoi.com/'+property.id"  target="_blank" class="btn fb  m-4"> <fa-icon [icon]="faFb"></fa-icon> </a>
+                            <a [href]="'https://twitter.com/intent/tweet?text=Mira esta propiedad&amp;url=https://activoi.com/propiedad/'+property.id"  target="_blank" class="btn twitter m-4"><fa-icon [icon]="faTwitter"></fa-icon></a>
+                            <a [href]="'https://wa.me/?text='+ property.title + ' Visitalo en https://activoi.com/propiedad/'+property.id " class="btn whats m-4" target="_blank"><fa-icon [icon]="faWhats"></fa-icon> </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-7 section-md-t3">

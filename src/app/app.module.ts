@@ -37,6 +37,7 @@ import {NgxImageCompressService} from 'ngx-image-compress';
 import { AgmCoreModule } from '@agm/core';
 import { StepPaymentComponent } from './pages/create-or-edit-property/step-payment/step-payment.component';
 import { TagInputModule } from 'ngx-chips';
+import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { TagInputModule } from 'ngx-chips';
     SearcherComponent,
     NoticePrivacyComponent,
     StepPaymentComponent,
+    FilterToolbarComponent,
   ],
   imports: [
     BrowserModule,

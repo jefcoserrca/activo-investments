@@ -6,16 +6,16 @@
         <div class="card-overlay">
             <div class="card-header-b">
                 <div class="card-category-b">
-                    <a class="category-b">{{ property.typeProperty }}</a>
+                    <a [routerLink]="['/propiedad', property.id]" class="category-b">{{ property.typeProperty }}</a>
                 </div>
                 <div class="card-title-b">
                     <h2 class="title-2">
-                        <a [routerLink]="['/propiedad']">{{ property.title }}
+                        <a [routerLink]="['/propiedad', property.id]">{{ property.title }}
                             <br> {{ property.city }}</a>
                     </h2>
                 </div>
                 <div class="card-date">
-                    <span class="date-b">${{ property.price }}</span>
+                    <span class="date-b">{{ property.price | currency:'MXN':'symbol-narrow' }}</span>
                 </div>
             </div>
         </div>

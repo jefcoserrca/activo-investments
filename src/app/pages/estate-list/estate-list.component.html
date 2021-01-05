@@ -1,58 +1,58 @@
 <section class="intro-single">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-8">
-                <div class="title-single-box">
-                    <h1 class="title-single">Inmuebles</h1>
-                    <span class="color-text-a">propiedades disponibles</span>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a>Subir mi propiedad</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Inmuebles</h1>
+          <span class="color-text-a">propiedades disponibles</span>
         </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav
+          aria-label="breadcrumb"
+          class="breadcrumb-box d-flex justify-content-lg-end"
+        >
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/crear-propiedad']">Subir mi propiedad</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ! FIN DEL TITULO  -->
 
-
-
-
 <!-- ======= Property Grid ======= -->
 <section class="property-grid grid">
-    <div class="container" *ngIf="!loading">
-        <div class="row pb-4">
-            <div class="col-sm-12">
-                <div class="grid-option">
-                    
-                        <select class="custom-select" [(ngModel)]="type" (ngModelChange)="searchByType()">
-                            <option selected value="todos">Todos</option>
-                            <option value="venta">Venta</option>
-                            <option value="renta">Renta</option>
-                            <option value="renta-vacacional">Renta Vacacional</option>
-                            <option value="terrenos">Terrenos</option>
-                            <option value="traspaso">Traspaso</option>
-                        </select>
-                    
-                </div>
-            </div>        
-                
-            <div class="col-md-4 pb-3" *ngFor="let item of filterProperties">
-                <app-card-property [property]="item"></app-card-property>
-            </div>
-        </div>
-        <div *ngIf="!filterProperties.length" class="message">
-            <fa-icon [icon]="faExclamation"></fa-icon><br>
-            <h4>No se encontraron Propiedades</h4> <br>
-        </div>
-        <!--<div class="row my-4">
+  <div class="container" *ngIf="!loading">
+    <div class="row pb-4">
+      <div class="col-sm-12 d-flex align-items-center justify-content-between mb-5">
+        <div class="searcher-title">
+          Resultados de propiedades
+          <span *ngIf="keyword"> con el termino '{{ keyword }}'</span>
+          <span *ngIf="city"> en {{ city }}</span>
+          <span *ngIf="city && state">,</span>
+          <span *ngIf="!city && state">en </span>
+          <span *ngIf="state">{{ state }}</span>
+        </div> <br>
+        <a *ngIf="keyword || city || state"  [routerLink]="['/inmuebles']"
+        >Limpiar filtros</a
+      >
+      </div>
+
+      <div class="col-md-4 pb-3" *ngFor="let item of filterProperties">
+        <app-card-property [property]="item"></app-card-property>
+      </div>
+    </div>
+    <div *ngIf="!filterProperties.length" class="message">
+      <fa-icon [icon]="faExclamation"></fa-icon><br />
+      <h4>No se encontraron Propiedades</h4>
+      <br />
+    </div>
+    <!--<div class="row my-4">
             <div class="col-sm-12">
                 <nav class="pagination-a">
                     <ul class="pagination justify-content-end">
@@ -79,8 +79,8 @@
                 </nav>
             </div>
         </div> -->
-    </div>
-    <div class="container" *ngIf="loading">
-        <app-loading></app-loading>
-    </div>
+  </div>
+  <div class="container" *ngIf="loading">
+    <app-loading></app-loading>
+  </div>
 </section>

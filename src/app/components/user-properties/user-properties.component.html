@@ -7,7 +7,7 @@
       </a>
       <p class="text-grey">{{ item.suburb }}</p>
       <p class="text-grey">{{ item.city }}, {{ item.state }}</p>
-      <p class="price">${{ item.price }} MXN</p>
+      <p class="price">{{ item.price | currency:'MXN':'symbol-narrow' }} MXN</p>
     </div>
     <button *ngIf="userId === item.uid"
       [routerLink]="['/editar-propiedad', item.id]"

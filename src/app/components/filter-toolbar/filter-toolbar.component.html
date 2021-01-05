@@ -1,0 +1,55 @@
+
+
+<div class="filter-bar">
+    <a class="filter-dropdown">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+    <i class="fa fa-plus filter-hidden" aria-hidden="true"></i>
+    <span class="filter-dropdown-text">Filtrar</span> </a>
+    <a class="filter filter-hidden">
+        
+    </a>
+  </div>
+  
+  <div class="edit-filter-modal hidden">
+    <form [formGroup]="form">
+                    
+        <select class="custom-select" formControlName="type" placeholder="Tipo" (ngModelChange)="search()">
+            <option value="">Todos</option>
+            <option value="venta">Venta</option>
+            <option value="renta">Renta</option>
+            <option value="renta-vacacional">Renta Vacacional</option>
+            <option value="terrenos">Terrenos</option>
+            <option value="traspaso">Traspaso</option>
+        </select>
+        <select class="custom-select" formControlName="typeProperty" placeholder="Tipo" (ngModelChange)="search()">
+            <option value="">Todos</option>
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="local">Local</option>
+            <option value="oficina">Oficina</option>
+            <option value="otro">Otro</option>
+        </select>
+        <select class="custom-select" formControlName="state" placeholder="Tipo" (ngModelChange)="search()">
+            <option [value]="''">Todos</option>
+            <option *ngFor="let state of states" [value]="state.id"> {{state.name}} </option>
+        </select>
+        <select class="custom-select" formControlName="city" placeholder="Tipo" (ngModelChange)="search()">
+
+            <option [value]="''">Todas</option>
+            <option *ngFor="let city of cities" [value]="city.name">{{ city.name}}</option>
+        </select>
+        <select class="custom-select" formControlName="rooms" placeholder="Tipo" (ngModelChange)="search()">
+            <option [value]="''">Sin filtro</option>
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+        </select>
+        <select class="custom-select" formControlName="baths" placeholder="Tipo" (ngModelChange)="search()">
+            <option [value]="''">Sin filtro</option>
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+        </select>
+    </form>
+    <button class="apply-button">Apply</button><button class="text-button">Cancel</button>
+  </div>
