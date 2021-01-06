@@ -6,6 +6,7 @@ export interface Property {
     address: string;
     amenities: Array <any>;
     area: number;
+    builderArea?: number;
     rooms: number;
     baths: number;
     createdAt?: Date;

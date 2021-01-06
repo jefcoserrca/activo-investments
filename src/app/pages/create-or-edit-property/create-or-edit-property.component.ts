@@ -24,6 +24,7 @@ import { Coords } from '../../interfaces/coords';
 import { AuthService } from 'src/app/services/auth.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { Property } from 'src/app/interfaces/property';
+import { StatesAndCitiesService } from '../../services/states-and-cities.service';
 declare var google: any;
 @Component({
   selector: 'app-create-or-edit-property',
@@ -50,6 +51,9 @@ export class CreateOrEditPropertyComponent implements OnInit {
   switch = false;
   id: string;
   unmatch: boolean;
+  states: Array<any>;
+  cities = [];
+
   @ViewChild('search', { static: false }) public searchElementRef: ElementRef;
 
   constructor(
@@ -60,11 +64,13 @@ export class CreateOrEditPropertyComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private authService: AuthService,
-    private propertySrv: PropertyService
+    private propertySrv: PropertyService,
+    private geoInfo: StatesAndCitiesService
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.initForm();
+    this.states = await this.geoInfo.getStates();
     this.path = (
       await this.activatedRoute.url.pipe(first()).toPromise()
     )[0].path;
@@ -82,6 +88,7 @@ export class CreateOrEditPropertyComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: new FormControl('', Validators.required),
       area: new FormControl('', Validators.required),
+      builderArea: new FormControl(''),
       rooms: new FormControl('', Validators.required),
       baths: new FormControl(''),
       description: new FormControl('', Validators.required),
@@ -95,6 +102,7 @@ export class CreateOrEditPropertyComponent implements OnInit {
       zipCode: new FormControl('', Validators.required),
       country: new FormControl(''),
     });
+    this.form.get('city').disable();
   }
   initMap(): void {
     this.mapsAPILoader.load().then(() => {
@@ -128,6 +136,9 @@ export class CreateOrEditPropertyComponent implements OnInit {
   async initProperty(): Promise<any> {
     const property: Property = await this.propertySrv.getProperty(this.id);
     if (this.uid === property.uid) {
+    const findState = this.states.find(
+        (st) => st.name === property.state
+      );
     this.form.controls.title.setValue(property.title);
     this.form.controls.area.setValue(property.area);
     this.form.controls.rooms.setValue(property.rooms);
@@ -139,13 +150,15 @@ export class CreateOrEditPropertyComponent implements OnInit {
     this.form.controls.typeProperty.setValue(property.typeProperty);
     this.form.controls.suburb.setValue(property.suburb);
     this.form.controls.city.setValue(property.city);
-    this.form.controls.state.setValue(property.state);
+    this.form.controls.state.setValue(findState.id);
     this.form.controls.zipCode.setValue(property.zipCode);
     this.form.controls.country.setValue(property.country);
     this.images = property.images;
     this.amenities = property.amenities;
     this.address = property.address;
-    this.coords = property.coords; 
+    this.coords = property.coords;
+    await this.getByState();
+    this.form.get('city').enable();
    } else {
      this.unmatch = true;
      this.router.navigate(['/usuario']);
@@ -202,8 +215,6 @@ export class CreateOrEditPropertyComponent implements OnInit {
             console.log(results[0]);
 
             this.form.controls.suburb.setValue(suburb?.long_name);
-            this.form.controls.city.setValue(city?.long_name);
-            this.form.controls.state.setValue(state?.long_name);
             this.form.controls.zipCode.setValue(zipcode?.long_name);
             this.form.controls.country.setValue('MX');
             this.address = results[0].formatted_address;
@@ -233,6 +244,9 @@ export class CreateOrEditPropertyComponent implements OnInit {
         images: this.images,
         uid: this.uid,
       };
+      const findState = this.states.find((st) => parseInt(this.form.value.state, 10) === st.id );
+      this.newProperty.state = findState ? findState.name : this.newProperty.state;
+      console.log(this.newProperty.state);
       this.loading = true;
       if (!this.switch) {
         this.stepeer = 'step2';
@@ -258,5 +272,11 @@ export class CreateOrEditPropertyComponent implements OnInit {
 
   deleteImage(index: number): void {
     this.images.splice(index, 1);
+  }
+
+  async getByState(): Promise<any> {
+    const state = this.form.value.state;
+    this.cities = await this.geoInfo.getCitiesByState(state);
+    this.form.get('city').enable();
   }
 }

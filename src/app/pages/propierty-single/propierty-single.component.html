@@ -1,277 +1,455 @@
 <section class="intro-single">
-    <div class="container">
-        <div class="row" *ngIf="!loading && property">
-            <div class="col-md-12 col-lg-8">
-                <div class="title-single-box">
-                    <h1 class="title-single">{{ property.title }}</h1>
-                    <span class="color-text-a">{{ property.address }}</span>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a [routerLink]="['/inmuebles']">Inmuebles</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            {{ id }}
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+  <div class="container">
+    <div class="row" *ngIf="!loading && property">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">{{ property.title }}</h1>
+          <span class="color-text-a">{{ property.address }}</span>
         </div>
-        <app-loading *ngIf="loading"></app-loading>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav
+          aria-label="breadcrumb"
+          class="breadcrumb-box d-flex justify-content-lg-end"
+        >
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/inmuebles']">Inmuebles</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ id }}
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
+    <app-loading *ngIf="loading"></app-loading>
+  </div>
 </section>
 
 <section class="property-single nav-arrow-b" *ngIf="!loading && property">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <owl-carousel-o class="owl-arrow gallery-property" [options]="optionsCarousel">
-                    <ng-template *ngFor="let url of property.images" carouselSlide class="carousel-item-b" [width]="100" style="
-                    width: auto;">
-
-                        <div class="banner" [ngStyle]="{'background-image':
-                        'url(' +
-                        url +
-                        ')'}">
-                        </div>
-
-                    </ng-template>
-                </owl-carousel-o>
-                <div class="row justify-content-between pt-5">
-                    <div class="col-md-5 col-lg-4">
-                        <div class="property-price d-flex justify-content-center foo">
-                            <div class="card-header-c d-flex">
-                               <!-- <div class="card-box-ico">
-                                    <span class="ion-money">$</span>
-                                </div> -->
-                                <div class="card-title-c align-self-center card-box-ico">
-                                    <h5 class="title-c">{{ property.price | currency:'MXN':'symbol-narrow' }}</h5>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-summary">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="title-box-d section-t4">
-                                        <h3 class="title-d">Resumen</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="summary-list">
-                                <ul class="list">
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Propiedad ID:</strong>
-                                        <span>{{ id }}</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Ubicación:</strong>
-                                        <span>{{ property.city }}, {{ property.state }}</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Tipo:</strong>
-                                        <span> {{ property.typeProperty }} </span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Status:</strong>
-                                        <span> {{ property.type }} </span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Area:</strong>
-                                        <span>{{ property.area }}m
-                        <sup>2</sup>
-                      </span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Habitaciones:</strong>
-                                        <span> {{ property.rooms }} </span>
-                                    </li>
-                                    <li class="d-flex justify-content-between">
-                                        <strong>Baños:</strong>
-                                        <span> {{ property.baths }} </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <br>
-                        <h5 class="pt-4">Compartir</h5>
-                        <div class="d-flex">
-                            <a [href]="'https://www.facebook.com/sharer/sharer.php?u=https://activoi.com/propiedad/'+property.id+'&quote='+property.title+' '+'en: '+property.address+' propiedad en: '+property.type+' visítala en: '+'https://activoi.com/'+property.id"  target="_blank" class="btn fb  m-4"> <fa-icon [icon]="faFb"></fa-icon> </a>
-                            <a [href]="'https://twitter.com/intent/tweet?text=Mira esta propiedad&amp;url=https://activoi.com/propiedad/'+property.id"  target="_blank" class="btn twitter m-4"><fa-icon [icon]="faTwitter"></fa-icon></a>
-                            <a [href]="'https://wa.me/?text='+ property.title + ' Visitalo en https://activoi.com/propiedad/'+property.id " class="btn whats m-4" target="_blank"><fa-icon [icon]="faWhats"></fa-icon> </a>
-                        </div>
-                    </div>
-                    <div class="col-md-7 col-lg-7 section-md-t3">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="title-box-d">
-                                    <h3 class="title-d">Descripción</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property-description">
-                            <p class="description color-text-a text-dark">
-                                {{ property.address }} <br>
-                                <br>
-                                {{ property.description }}
-                            </p>
-                        </div>
-                        <div class="row section-t3" *ngIf="property?.amenities.length > 0">
-                            <div class="col-sm-12">
-                                <div class="title-box-d">
-                                    <h3 class="title-d">Amenidades</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="amenities-list color-text-a">
-                            <ul class="list-a no-margin" *ngIf="property?.amenities.length > 0">
-                                <li *ngFor="let item of property.amenities"> {{ item.value }} </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10 offset-md-1">
-                <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Ubicación</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                        <iframe *ngIf="property.youtubeUrl" [src]="safeUrl" width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        <div *ngIf="!property.youtubeUrl" class="message">
-                            <fa-icon [icon]="faExclamation"></fa-icon><br>
-                            <h4>Esta propiedad no tiene video!</h4> <br>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                        <agm-map [latitude]="property.coords.latitude" [longitude]="property.coords.longitude" [zoom]="16">
-                            <agm-marker  [latitude]="property.coords.latitude" [longitude]="property.coords.longitude"></agm-marker>
-                        </agm-map>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row section-t3">
-                    <div class="col-sm-12">
-                        <div class="title-box-d">
-                            <h3 class="title-d">Contactar Agente</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <img src="../../../assets/img/agent.jpeg" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="property-agent">
-                            <h4 class="title-agent">Andrés Martínez Hernández</h4>
-                            <p class="color-text-a">
-                                Contador privado, bilingüe, e Ingeniero de Mantenimiento. Trabaje como Director of Maintanance para Creative Designs, Property management en Chicago, Director of Mauntanence para Archdiocese of Chicago, Proyect Manager para Comcast Chicago. Asesor Inmobiliario
-                                Certificado en Keller Williams
-                            </p>
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between">
-                                    <strong>Celular:</strong>
-                                    <span class="color-text-a">(222) 4568932</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Email:</strong>
-                                    <span class="color-text-a">andmarti1224@gmail.com</span>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <strong>Skype:</strong>
-                                    <span class="color-text-a">And.marti</span>
-                                </li>
-                            </ul>
-                            <div class="socials-a">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4">
-                        <div class="property-contact">
-                            <form class="form-as" [formGroup]="form" (ngSubmit)="send()">
-                                <div class="row">
-                                    <div class="col-md-12 mb-1">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg form-control-a" formControlName="name" placeholder="Nombre *" required>
-                                            <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
-                                                Nombre es requerido
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-1">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-lg form-control-a" formControlName="email" placeholder="Email *" required>
-                                            <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.required">
-                                                Correo es requerido
-                                            </span>
-                                            <span class="error-message" *ngIf="form.controls['email'].touched && form.controls['email'].errors?.pattern">
-                                                Formato no válido
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-1">
-                                        <div class="form-group">
-                                            <textarea formControlName="message" class="form-control" placeholder="Mensaje *" name="message" cols="45" rows="8" required></textarea>
-                                            <span class="error-message" *ngIf="form.controls['message'].touched && form.controls['message'].errors?.required">
-                                                Mensaje es requerido
-                                            </span> 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3" *ngIf="showMessage">
-                                        <div class="mb-3">
-                                            <div class="sent-message">Mensaje enviado</div>
-                                        </div>
-                                    </div>
-                                    <div *ngIf="showLoading" class="modal-body d-flex justify-content-center">
-                                        <app-loading></app-loading>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <button type="submit" [disabled]="!form.valid && !showLoading" class="btn btn-a">Enviar Mensaje</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <owl-carousel-o
+          class="owl-arrow gallery-property"
+          [options]="optionsCarousel"
+        >
+          <ng-template
+            *ngFor="let url of property.images; let i = index"
+            carouselSlide
+            class="carousel-item-b"
+            [width]="100"
+            style="width: auto"
+          >
+            <div
+              class="banner"
+              [ngStyle]="{ 'background-image': 'url(' + url + ')' }"
+              (click)="openGallery(i)"
+            >
+            <div class="message message-gallery">
+                <fa-icon [icon]="faImages"></fa-icon><br>
+                <span>Click para abrir la Galería</span>
             </div>
         </div>
+          </ng-template>
+        </owl-carousel-o>
+        <ngx-image-gallery
+          [images]="images"
+          [conf]="conf"
+        ></ngx-image-gallery>
+        <div class="row justify-content-between pt-5">
+          <div class="col-md-5 col-lg-4">
+            <div class="property-price d-flex justify-content-center foo">
+              <div class="card-header-c d-flex">
+                <!-- <div class="card-box-ico">
+                                    <span class="ion-money">$</span>
+                                </div> -->
+                <div class="card-title-c align-self-center card-box-ico">
+                  <h5 class="title-c">
+                    {{ property.price | currency: "MXN":"symbol-narrow" }}
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="property-summary">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d section-t4">
+                    <h3 class="title-d">Resumen</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="summary-list">
+                <ul class="list">
+                  <li class="d-flex justify-content-between">
+                    <strong>Propiedad ID:</strong>
+                    <span>{{ id }}</span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Ubicación:</strong>
+                    <span>{{ property.city }}, {{ property.state }}</span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Tipo:</strong>
+                    <span> {{ property.typeProperty }} </span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Status:</strong>
+                    <span> {{ property.type }} </span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Area:</strong>
+                    <span
+                      >{{ property.area }}m
+                      <sup>2</sup>
+                    </span>
+                  </li>
+                  <li *ngIf="property.builderArea" class="d-flex justify-content-between">
+                    <strong>Area de Construcción:</strong>
+                    <span
+                      >{{ property.builderArea }}m
+                      <sup>2</sup>
+                    </span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Habitaciones:</strong>
+                    <span> {{ property.rooms }} </span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Baños:</strong>
+                    <span> {{ property.baths }} </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <br />
+            <h5 class="pt-4">Compartir</h5>
+            <div class="d-flex">
+              <a
+                [href]="
+                  'https://www.facebook.com/sharer/sharer.php?u=https://activoi.com/propiedad/' +
+                  property.id +
+                  '&quote=' +
+                  property.title +
+                  ' ' +
+                  'en: ' +
+                  property.address +
+                  ' propiedad en: ' +
+                  property.type +
+                  ' visítala en: ' +
+                  'https://activoi.com/' +
+                  property.id
+                "
+                target="_blank"
+                class="btn fb m-4"
+              >
+                <fa-icon [icon]="faFb"></fa-icon>
+              </a>
+              <a
+                [href]="
+                  'https://twitter.com/intent/tweet?text=Mira esta propiedad&amp;url=https://activoi.com/propiedad/' +
+                  property.id
+                "
+                target="_blank"
+                class="btn twitter m-4"
+                ><fa-icon [icon]="faTwitter"></fa-icon
+              ></a>
+              <a
+                [href]="
+                  'https://wa.me/?text=' +
+                  property.title +
+                  ' Visitalo en https://activoi.com/propiedad/' +
+                  property.id
+                "
+                class="btn whats m-4"
+                target="_blank"
+                ><fa-icon [icon]="faWhats"></fa-icon>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-7 col-lg-7 section-md-t3">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Descripción</h3>
+                </div>
+              </div>
+            </div>
+            <div class="property-description">
+              <p class="description color-text-a text-dark">
+                {{ property.address }} <br />
+                <br />
+                {{ property.description }}
+              </p>
+            </div>
+            <div class="row section-t3" *ngIf="property?.amenities.length > 0">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Amenidades</h3>
+                </div>
+              </div>
+            </div>
+            <div class="amenities-list color-text-a">
+              <ul
+                class="list-a no-margin"
+                *ngIf="property?.amenities.length > 0"
+              >
+                <li *ngFor="let item of property.amenities">
+                  {{ item.value }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 offset-md-1">
+        <ul
+          class="nav nav-pills-a nav-pills mb-3 section-t3"
+          id="pills-tab"
+          role="tablist"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="pills-map-tab"
+              data-toggle="pill"
+              href="#pills-map"
+              role="tab"
+              aria-controls="pills-map"
+              aria-selected="false"
+              >Ubicación</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="pills-video-tab"
+              data-toggle="pill"
+              href="#pills-video"
+              role="tab"
+              aria-controls="pills-video"
+              aria-selected="true"
+              >Video</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div
+            class="tab-pane fade"
+            id="pills-video"
+            role="tabpanel"
+            aria-labelledby="pills-video-tab"
+          >
+            <iframe
+              *ngIf="property.youtubeUrl"
+              [src]="safeUrl"
+              width="100%"
+              height="460"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+            <div *ngIf="!property.youtubeUrl" class="message">
+              <fa-icon [icon]="faExclamation"></fa-icon><br />
+              <h4>Esta propiedad no tiene video!</h4>
+              <br />
+            </div>
+          </div>
+          <div
+            class="tab-pane fade show active"
+            id="pills-map"
+            role="tabpanel"
+            aria-labelledby="pills-map-tab"
+          >
+            <agm-map
+              [latitude]="property.coords.latitude"
+              [longitude]="property.coords.longitude"
+              [zoom]="16"
+            >
+              <agm-marker
+                [latitude]="property.coords.latitude"
+                [longitude]="property.coords.longitude"
+              ></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="row section-t3">
+          <div class="col-sm-12">
+            <div class="title-box-d">
+              <h3 class="title-d">Contactar Agente</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <img
+              src="../../../assets/img/agent.jpeg"
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="property-agent">
+              <h4 class="title-agent">Andrés Martínez Hernández</h4>
+              <p class="color-text-a">
+                Contador privado, bilingüe, e Ingeniero de Mantenimiento.
+                Trabaje como Director of Maintanance para Creative Designs,
+                Property management en Chicago, Director of Mauntanence para
+                Archdiocese of Chicago, Proyect Manager para Comcast Chicago.
+                Asesor Inmobiliario Certificado en Keller Williams
+              </p>
+              <ul class="list-unstyled">
+                <li class="d-flex justify-content-between">
+                  <strong>Celular:</strong>
+                  <span class="color-text-a">(222) 4568932</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Email:</strong>
+                  <span class="color-text-a">andmarti1224@gmail.com</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <strong>Skype:</strong>
+                  <span class="color-text-a">And.marti</span>
+                </li>
+              </ul>
+              <div class="socials-a">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-dribbble" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="property-contact">
+              <form class="form-as" [formGroup]="form" (ngSubmit)="send()">
+                <div class="row">
+                  <div class="col-md-12 mb-1">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-lg form-control-a"
+                        formControlName="name"
+                        placeholder="Nombre *"
+                        required
+                      />
+                      <span
+                        class="error-message"
+                        *ngIf="
+                          form.controls['name'].touched &&
+                          form.controls['name'].errors?.required
+                        "
+                      >
+                        Nombre es requerido
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-1">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control form-control-lg form-control-a"
+                        formControlName="email"
+                        placeholder="Email *"
+                        required
+                      />
+                      <span
+                        class="error-message"
+                        *ngIf="
+                          form.controls['email'].touched &&
+                          form.controls['email'].errors?.required
+                        "
+                      >
+                        Correo es requerido
+                      </span>
+                      <span
+                        class="error-message"
+                        *ngIf="
+                          form.controls['email'].touched &&
+                          form.controls['email'].errors?.pattern
+                        "
+                      >
+                        Formato no válido
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-1">
+                    <div class="form-group">
+                      <textarea
+                        formControlName="message"
+                        class="form-control"
+                        placeholder="Mensaje *"
+                        name="message"
+                        cols="45"
+                        rows="8"
+                        required
+                      ></textarea>
+                      <span
+                        class="error-message"
+                        *ngIf="
+                          form.controls['message'].touched &&
+                          form.controls['message'].errors?.required
+                        "
+                      >
+                        Mensaje es requerido
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3" *ngIf="showMessage">
+                    <div class="mb-3">
+                      <div class="sent-message">Mensaje enviado</div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="showLoading"
+                    class="modal-body d-flex justify-content-center"
+                  >
+                    <app-loading></app-loading>
+                  </div>
+
+                  <div class="col-md-12">
+                    <button
+                      type="submit"
+                      [disabled]="!form.valid && !showLoading"
+                      class="btn btn-a"
+                    >
+                      Enviar Mensaje
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <!-- End Property Single-->

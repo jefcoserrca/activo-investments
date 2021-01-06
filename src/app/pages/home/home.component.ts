@@ -4,6 +4,7 @@ import { faHome, faHandHoldingUsd, faHandshake, faArrowRight } from '@fortawesom
 import { ConfigService } from '../../services/config.service';
 import { Property } from '../../interfaces/property';
 import { PropertyService } from 'src/app/services/property.service';
+import {  Meta } from '@angular/platform-browser';
 declare var $: any;
 
 @Component({
@@ -88,16 +89,24 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private configSrv: ConfigService,
-    private propertiesSrv: PropertyService
+    private propertiesSrv: PropertyService,
+    private metaTagService: Meta,
   ) { }
 
   async ngOnInit(): Promise<any> {
+    this.metaTagService.addTags([
+      {
+        name: 'keywords',
+        content: `Activo Investments- Inversiones inmobiliarias en México, encuentra propiedades ya sea para rentar, vender o comprar. Activo investment, activo investments, inmobiliaria`,
+      },
+      { name: 'robots', content: 'index' },
+      { name: 'googlebot', content: 'index' },
+      { name: 'author', content: 'Activo Investments' },
+    ]);
     const res = await this.configSrv.getConfig();
     this.bannerItems = res.banner;
     this.recommProperties = res.recommendations;
-    console.log(this.recommProperties);
     this.lastProperties = await this.propertiesSrv.getPropertiesByDate();
-    console.log(this.lastProperties);
   }
 
   traslateCarousel(): void {

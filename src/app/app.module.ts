@@ -38,7 +38,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StepPaymentComponent } from './pages/create-or-edit-property/step-payment/step-payment.component';
 import { TagInputModule } from 'ngx-chips';
 import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
-
+import { NgxImageGalleryModule } from 'ngx-image-gallery';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +83,7 @@ import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolb
     }),
     HttpClientModule,
     TagInputModule,
+    NgxImageGalleryModule
   ],
   providers: [
     EmailSenderService,

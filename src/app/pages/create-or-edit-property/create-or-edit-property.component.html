@@ -76,13 +76,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="area"> Área en m² * </label>
-                                <input type="number" placeholder="Área en metros cuadrados" class="form-control"
-                                    formControlName="area"
-                                    [ngClass]="{'form-error': form.controls['area'].touched && (form.controls['area'].errors?.required )}">
+
+                                <label for="rooms"> Tipo de Inmueble </label>
+                                <select class="custom-select form-control" formControlName="typeProperty"
+                                    placeholder="Selecciona una">
+                                    <option value="casa">Casa</option>
+                                    <option value="departamento">Departamento</option>
+                                    <option value="local">Local</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="terreno">Terreno</option>
+                                    <option value="otro">Otro</option>
+                                </select>
                                 <span class="error-message"
-                                    *ngIf="form.controls['area'].touched && form.controls['area'].errors?.required">
-                                    Área es requerido
+                                    *ngIf="form.controls['typeProperty'].touched && form.controls['typeProperty'].errors?.required">
+                                    Tipo de inmueble es requerido
                                 </span>
                             </div>
                         </div>
@@ -101,7 +108,18 @@
                         </div>
                     </div>
                     <div class="row">
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="area"> Área Total en m² * </label>
+                                <input type="number" placeholder="Área en metros cuadrados" class="form-control"
+                                    formControlName="area"
+                                    [ngClass]="{'form-error': form.controls['area'].touched && (form.controls['area'].errors?.required )}">
+                                <span class="error-message"
+                                    *ngIf="form.controls['area'].touched && form.controls['area'].errors?.required">
+                                    Área es requerido
+                                </span>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
 
@@ -109,22 +127,15 @@
                                 <input type="number" placeholder="Baños" class="form-control" formControlName="baths">
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row" *ngIf="form.value.typeProperty === 'casa' || form.value.typeProperty === 'terreno'">
                         <div class="col-md-6">
                             <div class="form-group">
-
-                                <label for="rooms"> Tipo de Inmueble </label>
-                                <select class="custom-select form-control" formControlName="typeProperty"
-                                    placeholder="Selecciona una">
-                                    <option value="casa">Casa</option>
-                                    <option value="departamento">Departamento</option>
-                                    <option value="local">Local</option>
-                                    <option value="oficina">Oficina</option>
-                                    <option value="otro">Otro</option>
-                                </select>
-                                <span class="error-message"
-                                    *ngIf="form.controls['typeProperty'].touched && form.controls['typeProperty'].errors?.required">
-                                    Tipo de inmueble es requerido
-                                </span>
+                                <label for="builderArea"> Área de Construcción en m² * </label>
+                                <input type="number" placeholder="Área en metros cuadrados" class="form-control"
+                                    formControlName="builderArea"
+                                   >
                             </div>
                         </div>
                     </div>
@@ -208,24 +219,29 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Ciudad" class="form-control" formControlName="city"
-                                [ngClass]="{'form-error': form.controls['city'].touched && (form.controls['city'].errors?.required || form.controls['city'].errors?.pattern )}">
-                            <span class="error-message"
-                                *ngIf="form.controls['city'].touched && form.controls['city'].errors?.required">
-                                Ciudad es requerido
+                            <label for="city">Estado</label>
+                            <select type="text" placeholder="Estado" class="form-control" formControlName="state"
+                            (ngModelChange)="getByState()"    
+                            [ngClass]="{'form-error': form.controls['state'].touched && (form.controls['state'].errors?.required || form.controls['state'].errors?.pattern )}">
+                                <option *ngFor="let state of states" [value]="state.id"> {{state.name}} </option>
+                              </select>
+                                <span class="error-message"
+                                *ngIf="form.controls['state'].touched && form.controls['state'].errors?.required">
+                                Estado es requerido
                             </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" placeholder="Estado" class="form-control" formControlName="state"
-                                [ngClass]="{'form-error': form.controls['state'].touched && (form.controls['state'].errors?.required || form.controls['state'].errors?.pattern )}">
-                            <span class="error-message"
-                                *ngIf="form.controls['state'].touched && form.controls['state'].errors?.required">
-                                Estado es requerido
+                            <select type="text" placeholder="Ciudad" class="form-control" formControlName="city"
+                                [ngClass]="{'form-error': form.controls['city'].touched && (form.controls['city'].errors?.required || form.controls['city'].errors?.pattern )}">
+                                <option *ngFor="let city of cities" [value]="city.name">{{ city.name}}</option>
+                            </select>
+                                <span class="error-message"
+                                *ngIf="form.controls['city'].touched && form.controls['city'].errors?.required">
+                                Ciudad es requerido
                             </span>
                         </div>
                     </div>
