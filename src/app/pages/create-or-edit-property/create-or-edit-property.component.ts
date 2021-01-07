@@ -279,4 +279,11 @@ export class CreateOrEditPropertyComponent implements OnInit {
     this.cities = await this.geoInfo.getCitiesByState(state);
     this.form.get('city').enable();
   }
+
+  getVideoId(): void {
+    const url: string = this.form.value.youtubeUrl;
+    const res = url.split(/^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/);
+    this.form.value.youtubeUrl = res[2] ? res[2] : '';
+    console.log(this.form.value);
+  }
 }

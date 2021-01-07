@@ -157,9 +157,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="youtubeUrl">¿Link de Youtube? Pega el codigo del vídeo </label>
-                                <input type="text" placeholder="Pega aquí el Id" class="form-control"
-                                    formControlName="youtubeUrl">
+                                <label for="youtubeUrl">¿Link de Youtube? Pega aquí el link</label>
+                                <input type="text" placeholder="Pega link de Youtube" class="form-control"
+                                    formControlName="youtubeUrl" (ngModelChange)="getVideoId()">
 
                             </div>
                         </div>
