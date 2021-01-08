@@ -1,0 +1,18 @@
+.modal-content {
+    border-radius: 0px;
+    border: 1px solid rgb(46 181 98);
+}
+
+.modal-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+.opinion {
+    border-left: 4px solid;
+    padding-left: 1rem;
+    margin: 1rem;
+    .qualify{
+        margin-bottom: 0.2rem;
+    }
+}

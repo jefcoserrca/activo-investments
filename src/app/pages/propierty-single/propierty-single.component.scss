@@ -579,3 +579,16 @@ agm-map {
     filter: brightness(0.5);
     transition: all .3s ease;
 }
+
+.qualify {
+    color: #000000;
+    transition: all .5s ease;
+    cursor: pointer;
+    border: solid 2px;
+    padding: 5px;
+}
+
+.qualify:hover {
+    color: #2eca6a;
+    text-decoration: none;
+}

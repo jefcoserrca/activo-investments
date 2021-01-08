@@ -3,8 +3,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import {
   faArrowLeft,
   faArrowRight,
+  faComment,
   faExclamationCircle,
   faImages,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +26,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { Title, Meta } from '@angular/platform-browser';
 import { GALLERY_CONF, GALLERY_IMAGE, NgxImageGalleryComponent } from 'ngx-image-gallery';
+import { UserDataService } from '../../services/user-data.service';
+import { User } from '../../interfaces/user';
 declare var $;
 @Component({
   selector: 'app-propierty-single',
@@ -36,6 +40,8 @@ export class PropiertySingleComponent implements OnInit {
   faWhats = faWhatsapp;
   faTwitter = faTwitter;
   faImages = faImages;
+  faOpinion = faComment;
+  faStar = faStar;
   left = faArrowLeft;
   rigth = faArrowRight;
   id: string;
@@ -60,6 +66,7 @@ export class PropiertySingleComponent implements OnInit {
     showImageTitle: false,
   };
   images: GALLERY_IMAGE[] = [];
+  agent: User;
   constructor(
     private titleService: Title,
     private metaTagService: Meta,
@@ -67,13 +74,15 @@ export class PropiertySingleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
-    private sender: EmailSenderService
+    private sender: EmailSenderService,
+    private userSrv: UserDataService
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.loading = true;
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     await this.getProperty();
+    this.agent = await this.userSrv.getUser(this.property.uid);
     this.images = this.property.images.map((image) => ({ url: image, altText: this.property.title }));
     this.titleService.setTitle(this.property.title);
     this.metaTagService.addTags([
@@ -120,6 +129,7 @@ export class PropiertySingleComponent implements OnInit {
       id: this.property.id,
       address: this.property.address,
       city: this.property.city,
+      mailTo: this.agent.email
     };
     const response = await this.sender.sendPropertyToContact(data).catch(() => {
       this.showLoading = false;

@@ -287,63 +287,35 @@
         <div class="row">
           <div class="col-md-6 col-lg-4">
             <img
-              src="../../../assets/img/agent.jpeg"
+              [src]="agent.imgProfile"
               alt=""
               class="img-fluid"
             />
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="property-agent">
-              <h4 class="title-agent">Andrés Martínez Hernández</h4>
+              <h4 class="title-agent">{{ agent.name }}</h4>
+              <p class="color-text-a" *ngIf="agent.ranking" ><strong>{{ agent.ranking | number:'1.1-1'}} <fa-icon style="color: rgb(230, 196, 48);" [icon]="faStar"></fa-icon></strong>
+              <a data-toggle="modal" data-target="#rankingModal" >&nbsp;<small>Ver Opiniones</small> </a>
+              </p>
+              <p class="color-text-a" *ngIf="!agent.ranking"> Sin Calificación <fa-icon style="color: rgb(172, 172, 172);" [icon]="faStar"></fa-icon> </p>
               <p class="color-text-a">
-                Contador privado, bilingüe, e Ingeniero de Mantenimiento.
-                Trabaje como Director of Maintanance para Creative Designs,
-                Property management en Chicago, Director of Mauntanence para
-                Archdiocese of Chicago, Proyect Manager para Comcast Chicago.
-                Asesor Inmobiliario Certificado en Keller Williams
+                {{ agent.description }}
               </p>
               <ul class="list-unstyled">
                 <li class="d-flex justify-content-between">
                   <strong>Celular:</strong>
-                  <span class="color-text-a">(222) 4568932</span>
+                  <span class="color-text-a">{{ agent.phone }}</span>
                 </li>
                 <li class="d-flex justify-content-between">
                   <strong>Email:</strong>
-                  <span class="color-text-a">andmarti1224@gmail.com</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <strong>Skype:</strong>
-                  <span class="color-text-a">And.marti</span>
+                  <span class="color-text-a">{{ agent.email }}</span>
                 </li>
               </ul>
-              <div class="socials-a">
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <i class="fa fa-dribbble" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                </ul>
+              <div class="d-flex justify-content-center py-3">
+                <a class="qualify"  data-toggle="modal" data-target="#qualifyAgentModal">
+                  <fa-icon [icon]="faOpinion"></fa-icon>
+                  Calificar este agente</a>
               </div>
             </div>
           </div>
@@ -451,5 +423,7 @@
       </div>
     </div>
   </div>
+  <app-agent-quality [uid]="property.uid"></app-agent-quality>
+  <app-ranking-list [uid]="property.uid"></app-ranking-list>
 </section>
 <!-- End Property Single-->

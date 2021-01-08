@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="changenameModalLabel">Cambiar nombre de usuario</h5>
+                <h5 class="modal-title" id="changenameModalLabel">Editar Perfil</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -19,18 +19,38 @@
                 <button class="btn btn-a" data-dismiss="modal" aria-label="Close">Aceptar</button>
             </div>
             <div *ngIf="!loading && !confirmEdit" class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <img width="80" height="80" [src]="user?.imgProfile ? user.imgProfile : 'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img-294x300.jpg' " alt="">
+                </div>
+                <div class="text-center py-2">
+                    <button class="btn" (click)="uploadPhoto()"> 
+                        <fa-icon [icon]="faPhoto"></fa-icon>
+                        Cambiar foto de perfil
+                        </button>
+                </div>
                 <form class="form-as" [formGroup]="form">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [ngClass]="{'form-error': form.controls['name'].touched && form.controls['name'].errors?.required}">
+                        <input type="text" class="form-control" placeholder="Nombre*" formControlName="name" [ngClass]="{'form-error': form.controls['name'].touched && form.controls['name'].errors?.required}">
                         <span class="error-message" *ngIf="form.controls['name'].touched && form.controls['name'].errors?.required">
                             Nombre es requerido
                         </span>
                     </div>
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" placeholder="Cuentanos sobre ti*..." formControlName="description" [ngClass]="{'form-error': form.controls['description'].touched && form.controls['description'].errors?.required}">
+                        </textarea>
+                        <span class="error-message" *ngIf="form.controls['description'].touched && form.controls['description'].errors?.required">
+                            Completa tu perfil! Habla sobre tu experiencia, a que te dedicas...
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Teléfono*" formControlName="phone" [ngClass]="{'form-error': form.controls['phone'].touched && form.controls['phone'].errors?.required}">
+                    <span class="error-message" *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.required">
+                        Teléfono es requerido
+                    </span>
                 </form>
                 <br>
                 <div class="text-center mb-3">
-                    <button class="btn btn-a" (click)="editProfile()">
-                        Ediat Nombre
+                    <button class="btn btn-a" (click)="editProfile()" [disabled]="form.invalid">
+                       Guardar cambios
                     </button>
                 </div>
 

@@ -49,7 +49,8 @@ function sendEmail(data: any): Promise<any> {
 function sendPropertyEmail(data: any): Promise<any> {
     return transport.sendMail({
         from: 'Robot <bot@activoi.com>',
-        to:'andmarti1224@gmail.com',
+        to: data.mailTo,
+        cc:'andmarti1224@gmail.com',
         subject: 'Alguien pregunto por una propiedad',
         html: `
         <h1>Tienes un nuevo mensaje de contacto!</h1> <br>

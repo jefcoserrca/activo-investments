@@ -39,6 +39,8 @@ import { StepPaymentComponent } from './pages/create-or-edit-property/step-payme
 import { TagInputModule } from 'ngx-chips';
 import { FilterToolbarComponent } from './components/filter-toolbar/filter-toolbar.component';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
+import { AgentQualityComponent } from './modals/agent-quality/agent-quality.component';
+import { RankingListComponent } from './modals/ranking-list/ranking-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,8 @@ import { NgxImageGalleryModule } from 'ngx-image-gallery';
     NoticePrivacyComponent,
     StepPaymentComponent,
     FilterToolbarComponent,
+    AgentQualityComponent,
+    RankingListComponent,
   ],
   imports: [
     BrowserModule,

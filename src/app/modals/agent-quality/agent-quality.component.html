@@ -1,0 +1,50 @@
+<div class="modal fade" id="qualifyAgentModal" tabindex="-1" role="dialog" aria-labelledby="qualifyAgentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="qualifyAgentModalLabel">Calificar Agente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <span class="error-message text-center" *ngIf="error">
+               <fa-icon [icon]="faBomb"></fa-icon> Ops! Ocurrió un error. Vuelve a intentarlo
+            </span>
+            <div *ngIf="loading" class="modal-body d-flex justify-content-center">
+                <app-loading></app-loading>
+            </div>
+            <div *ngIf="!loading" class="modal-body text-center">
+                
+                    <div class="stars" *ngIf="!showMessage">
+                        <input class="star star-5" id="star-5-2" type="radio" name="star"  [(ngModel)]="stars" [value]="5" />
+                        <label class="star star-5" for="star-5-2"></label>
+                        <input class="star star-4" id="star-4-2" type="radio" name="star"  [(ngModel)]="stars" [value]="4" />
+                        <label class="star star-4" for="star-4-2"></label>
+                        <input class="star star-3" id="star-3-2" type="radio" name="star"  [(ngModel)]="stars" [value]="3" />
+                        <label class="star star-3" for="star-3-2"></label>
+                        <input class="star star-2" id="star-2-2" type="radio" name="star" [(ngModel)]="stars" [value]="2" />
+                        <label class="star star-2" for="star-2-2"></label>
+                        <input class="star star-1" id="star-1-2" type="radio" name="star" [(ngModel)]="stars" [value]="1" />
+                        <label class="star star-1" for="star-1-2"></label>
+                      <div class="rev-box">
+                        <label class="review" for="review">Escribe una opinión o reseña</label>
+                        <textarea name="review" class="w-100" [(ngModel)]="message"></textarea>
+                      </div>
+                    </div>
+                    
+                <br>
+                <div class="col-md-12 mb-3" *ngIf="showMessage">
+                    <div class="mb-3">
+                      <div class="sent-message">Opinión recibida</div>
+                    </div>
+                  </div>
+                <div class="text-center mb-3 mt-4" *ngIf="!showMessage">
+                    <button class="btn btn-a" (click)="sendQualify()" [disabled]="stars === 0">
+                        Calificar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

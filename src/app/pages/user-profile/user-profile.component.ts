@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   faAsterisk,
+  faAt,
+  faPhoneAlt,
   faSignOutAlt,
+  faStar,
   faUserEdit,
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
@@ -12,6 +15,7 @@ import { UserDataService } from '../../services/user-data.service';
 import { User } from '../../interfaces/user';
 import { PropertyService } from '../../services/property.service';
 import { ConfigService } from '../../services/config.service';
+declare var $;
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -21,6 +25,9 @@ export class UserProfileComponent implements OnInit {
   faUserEdit = faUserEdit;
   faAsterisk = faAsterisk;
   faSingOut = faSignOutAlt;
+  faStar = faStar;
+  faAt = faAt;
+  faPhone = faPhoneAlt;
   userId: string;
   user: User;
   adminMode = false;
@@ -40,6 +47,7 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.loading = true;
     this.userId = (
       await this.authSrv.currentUser.pipe(first()).toPromise()
     ).uid;
@@ -54,6 +62,10 @@ export class UserProfileComponent implements OnInit {
       : this.user.imgProfile
       ? this.user.imgProfile
       : 'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img-294x300.jpg';
+
+    this.loading = false;
+
+    this.updateOnClose();
   }
 
   async logout(): Promise<void> {
@@ -94,6 +106,12 @@ export class UserProfileComponent implements OnInit {
     });
     this.banner = res.banner.map((property) => {
       return { value: property.id, display: property.address };
+    });
+  }
+
+   updateOnClose(): void {
+    $('#changeNameModal').on('hidden.bs.modal', async () => {
+      this.user = await this.userData.getUser(this.userId);
     });
   }
 }

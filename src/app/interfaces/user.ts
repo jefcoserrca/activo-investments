@@ -5,6 +5,9 @@ export interface User {
     role: string;
     imgProfile?: string;
     billingInfo?: BillingInfo;
+    description?: string;
+    phone?: number;
+    ranking?: number;
 }
 
 export interface BillingInfo {
