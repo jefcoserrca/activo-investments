@@ -25,4 +25,18 @@ export class ConfigService {
       resolve(res);
     });
   }
+
+  async getConfigAboutUs(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      const res = await this.af.doc('config/aboutUs').valueChanges().pipe(first()).toPromise();
+      resolve(res);
+    });
+  }
+
+  async getConfigContact(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      const res = await this.af.doc('config/contact').valueChanges().pipe(first()).toPromise();
+      resolve(res);
+    });
+  }
 }

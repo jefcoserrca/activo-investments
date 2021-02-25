@@ -1,10 +1,10 @@
 <section class="intro-single">
     <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="!loading">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
                     <h1 class="title-single">Contacto</h1>
-                    <span class="color-text-a">Tienes alguna duda, idea, queja o comentario? Para nosotros es importante lo que piensas y por eso queremos saber de ti. Manda tu mensaje!</span>
+                    <span class="color-text-a">{{content.text}}</span>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -15,13 +15,12 @@
 
 <section class="contact">
     <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="!loading">
             <div class="col-sm-12">
                 <div class="contact-map box">
-                    <div id="map" class="contact-map">
-                        <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Plaza%20Citadina%20Corregidora,%20Los%20Pajaros,%20El%20Pueblito,%20Quer%C3%A9taro+(Activo%20Investments)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%"
-                            height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    </div>
+                    <agm-map id="map" class="contact-map" [latitude]="content.coords.latitude" [longitude]="content.coords.longitude" [zoom]="18">
+                        <agm-marker [latitude]="content.coords.latitude" [longitude]="content.coords.longitude" [markerDraggable]="false"></agm-marker>
+                    </agm-map>
                 </div>
             </div>
             <div class="col-sm-12 section-t8">
@@ -89,10 +88,10 @@
                                 </div>
                                 <div class="icon-box-content">
                                     <p class="mb-1">Email.
-                                        <span class="color-a">activoi.contacto@gmail.com</span>
+                                        <span class="color-a">{{content.email}}</span>
                                     </p>
                                     <p class="mb-1">Teléfono.
-                                        <span class="color-a">+52 442 320 5886</span>
+                                        <span class="color-a">{{content.phone}}</span>
                                     </p>
                                 </div>
                             </div>
@@ -107,9 +106,9 @@
                                 </div>
                                 <div class="icon-box-content">
                                     <p class="mb-1">
-                                        Plaza Citadina Corregidora,
-                                        <br> Los Pájaros, 76900 El Pueblito,
-                                        <br>Querétaro.
+                                        {{content.address}},
+                                        <br> {{content.suburb}}, {{content.pstal_code}} {{content.city}},
+                                        <br>{{content.state}}.
                                     </p>
                                 </div>
                             </div>
@@ -149,5 +148,9 @@
                 </div>
             </div>
         </div>
+
+        <div class="row justify-content-center" *ngIf="loading">
+            <app-loading></app-loading>
+          </div>
     </div>
 </section>

@@ -2,6 +2,11 @@
     padding: 12rem 0 3rem;
 }
 
+#map {
+    width: 100%;
+    height: 500px;
+}
+
 @media (max-width: 767px) {
     .intro-single {
         padding-top: 9rem;

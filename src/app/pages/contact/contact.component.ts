@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { EmailSenderService } from '../../services/email-sender.service';
+import { ConfigService } from '../../services/config.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -14,10 +15,15 @@ export class ContactComponent implements OnInit {
   form: FormGroup;
   showMessage: boolean;
   showLoading: boolean;
-  constructor( private formBuilder: FormBuilder, private sender: EmailSenderService) { }
+  @Input() content: any;
+  loading = true;
+  constructor( private formBuilder: FormBuilder, private sender: EmailSenderService,
+               private config: ConfigService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.initForm();
+    this.content = await this.config.getConfigContact();
+    this.loading = false;
   }
 
   initForm(): void {

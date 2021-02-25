@@ -1,65 +1,67 @@
 <section class="intro-single">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-8">
-                <div class="title-single-box">
-                    <h1 class="title-single">Tu partner perfecto para encontrar tu casa
-                    </h1>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a [routerLink]="[ '/contacto']">Contactar</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+  <div class="container" *ngIf="!loading">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">
+            {{ content.title }}
+          </h1>
         </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav
+          aria-label="breadcrumb"
+          class="breadcrumb-box d-flex justify-content-lg-end"
+        >
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/contacto']">Contactar</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ======= About Section ======= -->
 <section class="section-about">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="about-img-box">
-                    <img src="../../../assets/img/about.jpg" alt="" class="img-fluid">
-                </div>
-                <div class="sinse-box">
-                    <h3 class="sinse-title">ActivoInvestments
-                        <span></span>
-                        <br> Inmobiliaria</h3>
-                    <p>Inversiones inteligentes</p>
-                </div>
-            </div>
-            <div class="col-md-12 section-t8">
-                <div class="row">
-                    <div class="col-md-6 col-lg-5">
-                        <img src="../../../assets/img/about_2.jpg" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-lg-2  d-none d-lg-block">
-                        <div class="title-vertical d-flex justify-content-start">
-                            <span>Activo Investments</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-5 section-md-t3">
-                        <div class="title-box-d">
-                            <h3 class="title-d">Una
-                                <span class="color-d">inversión</span> inmobiliaria
-                                <br> inteligente</h3>
-                        </div>
-                        <p class="color-text-a">
-                            Comprar, rentar o vender tu propiedad es una tarea muy importante. En Activo Investements te apoyamos a lograrlo de la manera más rápida y profesional.
-                        </p>
-                        <p class="color-text-a">
-                            Nuestra plataforma permite que publiques tus propiedades, así como encontrar tu próximo nuevo hogar ya sea que quieras iniciar desde cero con un terreno, o bien rentar o comprar una nueva casa! <br> Disfruta de <strong>Activo Investments</strong>                            la mejor forma de invertir!
-                        </p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row" *ngIf="!loading">
+      <div class="col-sm-12">
+        <div class="about-img-box">
+          <img [src]="content?.banner" alt="" class="img-fluid" />
         </div>
+        <div class="sinse-box">
+          <h3 class="sinse-title">{{ content?.subtitle }} <span></span></h3>
+          <p>{{ content?.slogan }}</p>
+        </div>
+      </div>
+      <div class="col-md-12 section-t8">
+        <div class="row">
+          <div class="col-md-6 col-lg-5">
+            <img [src]="content?.image" alt="" class="img-fluid" />
+          </div>
+          <div class="col-lg-2 d-none d-lg-block">
+            <div class="title-vertical d-flex justify-content-start">
+              <span>Activo Investments</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 section-md-t3">
+            <div class="title-box-d">
+              <h3 class="title-d">
+                {{ content?.text_title }}
+              </h3>
+            </div>
+            <p class="color-text-a" style="font-size: 1.2rem;">
+              {{ content.text }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row justify-content-center" *ngIf="loading">
+      <app-loading></app-loading>
+    </div>
+  </div>
 </section>
