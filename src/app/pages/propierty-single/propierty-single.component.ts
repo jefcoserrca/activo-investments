@@ -88,11 +88,11 @@ export class PropiertySingleComponent implements OnInit {
     this.metaTagService.addTags([
       {
         name: 'keywords',
-        content: `Activo Investments- ${this.property.title}, ${this.property.description} en ${this.property.address}, ${this.property.type}`,
+        content: `Diverso Investments- ${this.property.title}, ${this.property.description} en ${this.property.address}, ${this.property.type}`,
       },
       { name: 'robots', content: 'no-index' },
       { name: 'googlebot', content: 'no-index' },
-      { name: 'author', content: 'Activo Investments' },
+      { name: 'author', content: 'Diverso Investments' },
     ]);
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://www.youtube.com/embed/' + this.property.youtubeUrl

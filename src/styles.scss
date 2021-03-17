@@ -4,6 +4,10 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 @import "~font-awesome/css/font-awesome.css";
+
+body {
+    background: #eeeeee;
+}
 a {
     color: #000000;
     transition: all .5s ease;

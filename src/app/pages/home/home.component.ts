@@ -97,11 +97,11 @@ export class HomeComponent implements OnInit {
     this.metaTagService.addTags([
       {
         name: 'keywords',
-        content: `Activo Investments- Inversiones inmobiliarias en México, encuentra propiedades ya sea para rentar, vender o comprar. Activo investment, activo investments, inmobiliaria`,
+        content: `Diverso Investments- Inversiones inmobiliarias en México, encuentra propiedades ya sea para rentar, vender o comprar. Diverso investment, Diverso investments, inmobiliaria`,
       },
       { name: 'robots', content: 'index' },
       { name: 'googlebot', content: 'index' },
-      { name: 'author', content: 'Activo Investments' },
+      { name: 'author', content: 'Diverso Investments' },
     ]);
     const res = await this.configSrv.getConfig();
     this.bannerItems = res.banner;
